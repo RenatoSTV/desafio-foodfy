@@ -2,6 +2,7 @@
 <h1 align="center"><img width="25px" height="25px" src="https://image.flaticon.com/icons/svg/481/481486.svg"> Foody</h1>
 
 [![time tracker](https://wakatime.com/badge/github/RenatoSTV/desafio-foodfy.svg)](https://wakatime.com/badge/github/RenatoSTV/desafio-foodfy)
+![GitHub](https://img.shields.io/github/license/RenatoSTV/desafio-foodfy)
 
 ## Sobre
 
