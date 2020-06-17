@@ -1,6 +1,8 @@
 
 <h1 align="center"><img width="25px" height="25px" src="https://image.flaticon.com/icons/svg/481/481486.svg"> Foody</h1>
 
+[![time tracker](https://wakatime.com/badge/github/RenatoSTV/desafio-foodfy.svg)](https://wakatime.com/badge/github/RenatoSTV/desafio-foodfy)
+
 ## Sobre
 
 <p>O Foody é um site que recebe receitas cadastradas por leitores e grandes Chefs da culinária mundial.</p>
@@ -21,7 +23,7 @@
 
 ## Observações
 
-<p>O projeto Foodfy foi desenvolvido durante o curos LaunchBase, da <a href="https://rocketseat.com.br" alt="Rocketseat" target="_blank">Rocketseat</a> e ministrada pelo professor <a href="https://github.com/maykbrito" alt="Mayk Brito" target="_blank">Mayk Brito</a>, usando como base as aulas do modulo 2.</p>
+<p>O projeto Foodfy foi desenvolvido durante o curso LaunchBase, da <a href="https://rocketseat.com.br" alt="Rocketseat" target="_blank">Rocketseat</a> e ministrada pelo professor <a href="https://github.com/maykbrito" alt="Mayk Brito" target="_blank">Mayk Brito</a>, usando como base as aulas do modulo 2.</p>
 
 <br>
 
