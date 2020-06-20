@@ -1,0 +1,41 @@
+{% extends 'layout.njk' %}
+
+{% block head %}
+    <link rel="stylesheet" href="about.css">
+
+    <title>About</title>
+{% endblock head %}
+<body>
+    <header>
+        {% block header %}
+            <div class="logo">
+                <a href="/"><img src="assets\logo.png" alt="LOGO Foodfy"></a>
+            </div>
+            <div class="header-infos">
+                <a href="#">
+                    <strong>About</strong>
+                </a>
+                <a href="/recipes">Recipes</a>
+            </div>
+        {% endblock header %}
+    </header>
+    {% block content %}
+        <div class="about">
+            <h1>About Foodfy</h1>
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusantium cum expedita adipisci, qui at facere sit deserunt perferendis ea quo enim? Quis debitis aperiam molestiae dolorem blanditiis reprehenderit laborum ipsa?<br>
+
+                <br>
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatum quis eligendi sit ea vel aperiam maiores sed minima pariatur quia distinctio ab explicabo ullam exercitationem, repellat quas delectus. Neque, iste!</p>
+
+            <h2>How it all started...</h2>
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusantium cum expedita adipisci, qui at facere sit deserunt perferendis ea quo enim? Quis debitis aperiam molestiae dolorem blanditiis reprehenderit laborum ipsa?<br>
+
+                <br>
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatum quis eligendi sit ea vel aperiam maiores sed minima pariatur quia distinctio ab explicabo ullam exercitationem, repellat quas delectus. Neque, iste!</p>
+
+            <h2>Our recipes</h2>
+
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis enim doloremque suscipit quis, consectetur dignissimos magnam culpa rem reprehenderit eligendi saepe fugiat temporibus voluptate officiis laudantium totam quaerat sequi nostrum!</p>
+        </div>
+    {% endblock content %}
+</body>

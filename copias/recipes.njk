@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="icon" type="image/png" sizes="16x16" href="assets\favicon-32x32.png">
+        <link rel="stylesheet" href="recipes.css">
+
+        <title>Recipes</title>
+    </head>
+    <body>
+        <header>
+            <div class="logo">
+                <a href="index.html"><img src="assets\logo.png" alt="LOGO Foodfy"></a>
+            </div>
+            <div class="header-infos">
+                <a href="/about">About</a>
+                <a href="#"><strong>Recipes</strong></a>
+            </div>
+        </header>
+        <section class="cards">
+            <div class="card" id="burger">
+                <div class="image-content">
+                    <img src="assets\burger.png" alt="Burger">
+                </div>
+                <div class="card-infos">
+                    <h3 id>Triple bacon burger</h3>
+                    <p>por Jorge Relato</p>
+                </div>
+            </div>
+            <div class="card" id="pizza">
+                <div class="image-content">
+                    <img src="assets\pizza.png" alt="Pizza">
+                </div>
+                <div class="card-infos">
+                    <h3>4 seasons pizza</h3>
+                    <p>por Fabiana Melo</p>
+                </div>
+            </div>
+            <div class="card" id="espaguete">
+                <div class="image-content">
+                    <img src="assets\espaguete.png" alt="Spaghetti">
+                </div>
+                <div class="card-infos">
+                    <h3>Garlic spaghetti</h3>
+                    <p>por Júlia Kinoto</p>
+                </div>
+            </div>
+            <div class="card" id="lasanha">
+                <div class="image-content">
+                    <img src="assets\lasanha.png" alt="Lasagna">
+                </div>
+                <div class="card-infos">
+                    <h3>Mac n' cheese lasagna</h3>
+                    <p>por Juliano Vieira</p>
+                </div>
+            </div>
+            <div class="card" id="doce">
+                <div class="image-content">
+                    <img src="assets\doce.png" alt="Heavenly bread">
+                </div>
+                <div class="card-infos">
+                    <h3>Heavenly bread sweets</h3>
+                    <p>por Ricardo Golvea</p>
+                </div>
+            </div>
+            <div class="card" id="asinhas">
+                <div class="image-content">
+                    <img src="assets\asinhas.png" alt="Chicken wings">
+                </div>
+                <div class="card-infos">
+                    <h3>Barbecue chicken wings</h3>
+                    <p>por Vania Steroski</p>
+                </div>
+            </div>
+            <div class="card" id="burger">
+                <div class="image-content">
+                    <img src="assets\burger.png" alt="Burger">
+                </div>
+                <div class="card-infos">
+                    <h3>Triple bacon burger</h3>
+                    <p>por Jorge Relato</p>
+                </div>
+            </div>
+            <div class="card" id="pizza">
+                <div class="image-content">
+                    <img src="assets\pizza.png" alt="Pizza">
+                </div>
+                <div class="card-infos">
+                    <h3>4 seasons pizza</h3>
+                    <p>por Fabiana Melo</p>
+                </div>
+            </div>
+            <div class="card" id="espaguete">
+                <div class="image-content">
+                    <img src="assets\espaguete.png" alt="Spaghetti">
+                </div>
+                <div class="card-infos">
+                    <h3>Garlic spaghetti</h3>
+                    <p>por Júlia Kinoto</p>
+                </div>
+            </div>
+            <div class="card" id="lasanha">
+                <div class="image-content">
+                    <img src="assets\lasanha.png" alt="Lasagna">
+                </div>
+                <div class="card-infos">
+                    <h3>Mac n' cheese lasagna</h3>
+                    <p>por Juliano Vieira</p>
+                </div>
+            </div>
+            <div class="card" id="doce">
+                <div class="image-content">
+                    <img src="assets\doce.png" alt="Heavenly bread">
+                </div>
+                <div class="card-infos">
+                    <h3>Heavenly bread sweets</h3>
+                    <p>por Ricardo Golvea</p>
+                </div>
+            </div>
+            <div class="card"  id="asinhas">
+                <div class="image-content">
+                    <img src="assets\asinhas.png" alt="Chicken wings">
+                </div>
+                <div class="card-infos">
+                    <h3>Barbecue chicken wings</h3>
+                    <p>por Vania Steroski</p>
+                </div>
+            </div>
+        </section>
+        <footer class="footer">
+            <p>All rights reserved, Foodfy recipes</p>
+        </footer>
+
+        <div class="modal">
+            <div class="modal-content">
+                <img src="" alt="">
+            </div>
+        </div>
+
+        <script src="scripts.js"></script>
+    </body>
+</html>
+
+{% extends 'layout.njk' %}
+
+{% block head %}
+    <link rel="stylesheet" href="recipes.css">
+
+    <title>Recipes</title>
+{% endblock head %}
+<body>
+    <header>
+        {% block header %}
+            <div class="logo">
+                <a href="/"><img src="assets\logo.png" alt="LOGO Foodfy"></a>
+            </div>
+            <div class="header-infos">
+                <a href="/about">About</a>
+                <a href="#">
+                    <strong>Recipes</strong>
+                </a>
+            </div>
+        {% endblock header %}
+    </header>
+    {% block content %}
+        <section class="cards">
+            <div class="card" id="burger">
+                <div class="image-content">
+                    <img src="assets\burger.png" alt="Burger">
+                </div>
+                <div class="card-infos">
+                    <h3 id="id">Triple bacon burger</h3>
+                    <p>por Jorge Relato</p>
+                </div>
+            </div>
+            <div class="card" id="pizza">
+                <div class="image-content">
+                    <img src="assets\pizza.png" alt="Pizza">
+                </div>
+                <div class="card-infos">
+                    <h3>4 seasons pizza</h3>
+                    <p>por Fabiana Melo</p>
+                </div>
+            </div>
+            <div class="card" id="espaguete">
+                <div class="image-content">
+                    <img src="assets\espaguete.png" alt="Spaghetti">
+                </div>
+                <div class="card-infos">
+                    <h3>Garlic spaghetti</h3>
+                    <p>por Júlia Kinoto</p>
+                </div>
+            </div>
+            <div class="card" id="lasanha">
+                <div class="image-content">
+                    <img src="assets\lasanha.png" alt="Lasagna">
+                </div>
+                <div class="card-infos">
+                    <h3>Mac n' cheese lasagna</h3>
+                    <p>por Juliano Vieira</p>
+                </div>
+            </div>
+            <div class="card" id="doce">
+                <div class="image-content">
+                    <img src="assets\doce.png" alt="Heavenly bread">
+                </div>
+                <div class="card-infos">
+                    <h3>Heavenly bread sweets</h3>
+                    <p>por Ricardo Golvea</p>
+                </div>
+            </div>
+            <div class="card" id="asinhas">
+                <div class="image-content">
+                    <img src="assets\asinhas.png" alt="Chicken wings">
+                </div>
+                <div class="card-infos">
+                    <h3>Barbecue chicken wings</h3>
+                    <p>por Vania Steroski</p>
+                </div>
+            </div>
+            <div class="card" id="burger">
+                <div class="image-content">
+                    <img src="assets\burger.png" alt="Burger">
+                </div>
+                <div class="card-infos">
+                    <h3>Triple bacon burger</h3>
+                    <p>por Jorge Relato</p>
+                </div>
+            </div>
+            <div class="card" id="pizza">
+                <div class="image-content">
+                    <img src="assets\pizza.png" alt="Pizza">
+                </div>
+                <div class="card-infos">
+                    <h3>4 seasons pizza</h3>
+                    <p>por Fabiana Melo</p>
+                </div>
+            </div>
+            <div class="card" id="espaguete">
+                <div class="image-content">
+                    <img src="assets\espaguete.png" alt="Spaghetti">
+                </div>
+                <div class="card-infos">
+                    <h3>Garlic spaghetti</h3>
+                    <p>por Júlia Kinoto</p>
+                </div>
+            </div>
+            <div class="card" id="lasanha">
+                <div class="image-content">
+                    <img src="assets\lasanha.png" alt="Lasagna">
+                </div>
+                <div class="card-infos">
+                    <h3>Mac n' cheese lasagna</h3>
+                    <p>por Juliano Vieira</p>
+                </div>
+            </div>
+            <div class="card" id="doce">
+                <div class="image-content">
+                    <img src="assets\doce.png" alt="Heavenly bread">
+                </div>
+                <div class="card-infos">
+                    <h3>Heavenly bread sweets</h3>
+                    <p>por Ricardo Golvea</p>
+                </div>
+            </div>
+            <div class="card" id="asinhas">
+                <div class="image-content">
+                    <img src="assets\asinhas.png" alt="Chicken wings">
+                </div>
+                <div class="card-infos">
+                    <h3>Barbecue chicken wings</h3>
+                    <p>por Vania Steroski</p>
+                </div>
+            </div>
+        </section>
+    {% endblock content %}
+    <script src="scripts"></script>
+</body>

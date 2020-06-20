@@ -1,0 +1,28 @@
+{
+  "name": "desafio-foodfy",
+  "version": "1.0.0",
+  "description": "<h1 align=\"center\"><img width=\"25px\" height=\"25px\" src=\"https://image.flaticon.com/icons/svg/481/481486.svg\"> Foody</h1>",
+  "main": "scripts.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RenatoSTV/desafio-foodfy.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RenatoSTV/desafio-foodfy/issues"
+  },
+  "homepage": "https://github.com/RenatoSTV/desafio-foodfy#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nunjucks": "^3.2.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
+}

@@ -1,0 +1,157 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+
+body {
+  background-color: whitesmoke;
+  font-family: "Roboto", sans-serif;
+  margin: 0;
+
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+header {
+  width: 940px;
+  display: flex;
+  align-items: center;
+
+  margin: 0 auto;
+  margin-bottom: 30px;
+}
+
+header .logo {
+  margin-top: 36px;
+}
+
+header .header-infos {
+  margin-top: 38px;
+  margin-left: 120px;
+}
+
+.header-infos a {
+  margin-right: 30px;
+  text-decoration: none;
+  font-size: 16px;
+  color: #111111;
+}
+
+.recipe{
+  margin: 0 auto;
+
+  width: 940px;
+}
+
+.image-content{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.image-content img{
+  border-radius: 15px;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-infos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.card-infos h2{
+  font-size: 36px;
+  font-weight: bold;
+  color: #111111;
+  margin: 0;
+  margin-top: 50px;
+}
+
+.card-infos p{
+  font-size: 20px;
+  color: #777777;
+  margin: 0;
+  margin-top: 4px;
+}
+
+.ingredients{
+  margin: 0 auto;
+}
+.ingredients h3{
+  margin-top: 50px;
+  margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #111111;  
+}
+
+.ingredients li{
+  font-size: 18px;
+  line-height: 28px;
+  color: #444444;
+}
+
+.preparation{
+  margin: 0 auto;
+}
+
+.preparation h3{
+  margin-top: 40px;
+  margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #111111;
+}
+
+.preparation li{
+  font-size: 18px;
+  line-height: 28px;
+  color: #444444;
+  list-style: circle;
+}
+
+.information{
+  margin: 0 auto;
+}
+.information h3{
+  margin-top: 40px;
+  margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #111111;
+}
+
+.information p{
+  font-size: 18px;
+  line-height: 28px;
+  color: #444444;
+}
+
+.recipe_showhide.active{
+  visibility: hidden;
+}
+
+span{
+  font-size: 12px;
+  font-weight: bold;
+  color: #999999;
+}
+
+footer {
+  height: 62px;
+
+  background-color: #eeeeee;
+
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer p {
+  font-size: 14px;
+  color: #999999;
+
+  margin: 23px auto;
+}
