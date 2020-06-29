@@ -20,14 +20,14 @@
         <div class="recipe">
                 <div id="{{recipe.id}}"></div>
                 <div class="image-content">
-                    <img src="{{recipe.image}}" alt="{{recipe.title}}">
+                    <img src="{{recipe.image_url}}" alt="{{recipe.title}}">
                 </div>
                 <div class="card-infos">
                     <h2 id>{{recipe.title}}</h2>
                     <p>por {{recipe.author}}</p>
                 </div>
                 <div class="ingredients">
-                    <h3>Ingredientes <span class='showhide_btn'>ESCONDER</span></h3>
+                    <h3>🥚 Ingredientes <span class='showhide_btn'>ESCONDER</span></h3>
                     <ul class='recipe_showhide'>
                         {% for ingredient in recipe.ingredients %}
                         <li>{{ingredient}}</li>
@@ -35,16 +35,16 @@
                     </ul>
                 </div>
                 <div class="preparation">
-                    <h3>Modo de preparo <span class='showhide_btn'>ESCONDER</span></h3>
+                    <h3>🍳 Modo de preparo <span class='showhide_btn'>ESCONDER</span></h3>
                     <ul class='recipe_showhide'>
-                    {% for step in recipe.preparation %}
+                    {% for step in recipe.steps %}
                         <li>{{step}}</li>
                     {% endfor %}
                     </ul>
                 </div>
                 <div class="information">
-                    <h3>Informações adicionais <span class='showhide_btn'>ESCONDER</span></h3>
-                    <p class='recipe_showhide'>{{recipe.information}}</p>
+                    <h3>📝 Informações adicionais <span class='showhide_btn'>ESCONDER</span></h3>
+                    <p class='recipe_showhide'>{{recipe.infos}}</p>
                 </div>
             </div>
         </div>

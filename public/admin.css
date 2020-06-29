@@ -1,0 +1,459 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  border: none;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: whitesmoke;
+  font-family: "Roboto", sans-serif;
+  margin: 0;
+
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.header {
+  width: 100%;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #111111;
+  margin-bottom: 50px;
+}
+
+.header .header-content{
+  width: 940px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header #create{
+  font-size: 16px;
+  font-weight: bold;
+  color: #ffffff;
+
+  padding: 9px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration: none;
+  border: 1px solid white;
+}
+
+.head{
+  width: 940px;
+  margin: 0 auto;
+  margin-bottom: 30px;
+}
+
+.cards {
+  width: 940px;
+  display: grid;
+  grid-template-columns: 1fr 1fr ;
+  gap: 20px;
+  margin: 0 auto;
+  margin-bottom: 50px;
+}
+
+.card{
+  display: flex;
+}
+
+.card .image-content{
+  width: 172px;
+  height: 80px;
+  border-radius: 15px;
+  display: block;
+}
+
+.card .image-content img{ 
+  width: 172px;
+  height: 80px;
+  border-radius: 15px;
+  box-shadow: 6px 6px 8px -4px black;
+}
+
+.card .card-infos{
+  display: grid;
+  grid-template-columns: 1fr;
+
+  margin-left: 20px;
+}
+
+.card .card-infos h3 {
+  font-size: 18px;
+  color: #111111;
+  margin-bottom: 0;
+}
+
+.card .card-infos p {
+  font-size: 14px;
+  color: #777777;
+
+  margin-top: 5px;
+}
+
+.card .card-infos a{
+  font-size: 14px;
+  font-weight: bold;
+  color: #6558C3;
+  text-decoration: none;
+}
+
+.logo img {
+  width: 90px;
+  height: 27px;
+}
+
+.details form{
+  width: 940px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.details{
+  padding: 0 32px;
+  margin-bottom: 200px;
+}
+
+.details .head {
+    width: 940px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.details .head h1{
+  font-size: 24px;
+  font-weight: bold;
+  color: #111111;
+}
+
+.details .head .options a{
+  margin-left: 10px;
+}
+
+.details .head button{
+  font-size: 16px;
+  font-weight: bold;
+  color: #ffffff;
+
+  padding: 9px 20px;
+  background-color:  #6558C3;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.details .item{
+  width: 940px;
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+}
+
+.details .item .ingredients,
+.details .item .preparo{
+  display: flex;
+  flex-direction: column;
+}
+
+.details .item label{
+  margin-bottom: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #111111;
+}
+
+.details .item input{
+  height: 50px;
+  margin: 0;
+  font-size: 18px;
+  border:1px solid #dddddd;
+  border-radius: 4px;
+  background-color: #ffffff;
+  padding: 5px;
+}
+
+.details .item textarea{
+  margin: 0;
+  font-size: 18px;
+  border:1px solid #dddddd;
+  border-radius: 4px;
+  background-color: #ffffff;
+  font-family: "Roboto", sans-serif;
+  padding: 5px;
+}
+
+.details button{
+  font-size: 16px;
+  font-weight: bold;
+  color: #6558C3;
+  margin-top: 15px;
+  text-align: left;
+  background-color: whitesmoke;
+}
+
+#info{
+  min-height: 250px;
+}
+
+/* -== Mostrar Receita ==- */
+
+.head a{
+  font-size: 16px;
+  font-weight: bold;
+  color: #ffffff;
+  text-decoration: none;
+  padding: 9px 20px;
+  background-color:  #6558C3;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.recipe{
+  margin: 0 auto;
+  margin-top: 20px;
+
+  width: 940px;
+}
+
+.image-content{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 6px 6px 8px -4px black;
+  border-radius: 15px;
+}
+.image-content img{
+  max-height: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 15px;
+}
+
+.card-infos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.card-infos h2{
+  font-size: 36px;
+  font-weight: bold;
+  color: #111111;
+  margin: 0;
+  margin-top: 50px;
+}
+
+.card-infos p{
+  font-size: 20px;
+  color: #777777;
+  margin: 0;
+  margin-top: 4px;
+}
+
+#ingred{
+  margin: 0 auto;
+}
+#ingred h3{
+  margin-top: 50px;
+  margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #111111;  
+}
+
+#ingred li{
+  font-size: 18px;
+  line-height: 28px;
+  color: #444444;
+  list-style: none;
+}
+
+.preparation{
+  margin: 0 auto;
+}
+
+.preparation h3{
+  margin-top: 40px;
+  margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #111111;
+}
+
+.preparation li{
+  font-size: 18px;
+  line-height: 28px;
+  color: #444444;
+  list-style: none;
+}
+
+.information{
+  margin: 0 auto;
+  margin-bottom: 50px;
+}
+.information h3{
+  margin-top: 40px;
+  margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #111111;
+}
+
+.information p{
+  font-size: 18px;
+  line-height: 28px;
+  color: #444444;
+}
+
+span{
+  font-size: 12px;
+  font-weight: bold;
+  color: #999999;
+  cursor: pointer;
+}
+
+/* -== Editar receita==- */
+
+.detailsedit{
+    width: 940px;
+    margin: 0 auto;
+    display: grid;
+}
+
+.detailsedit .forms{
+display: flex;
+align-items: center;
+justify-content: space-between;
+
+}
+.detailsedit .head{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.detailsedit .head h1{
+  font-size: 24px;
+  font-weight: bold;
+  color: #111111;
+}
+
+.detailsedit .head .buttons{
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.detailsedit button{
+  font-size: 16px;
+  font-weight: bold;
+  color: #ffffff;
+
+  padding: 9px 20px;
+  background-color:  #6558C3;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+#return{
+  background-color: whitesmoke;
+  font-size: 16px;
+  color: #111111;
+  font-weight: bold;
+  border: 1px solid black;
+}
+
+#del{
+  background-color: #DC4747;
+}
+
+.detailsedit .fields{
+  width: 940px;
+  margin: 0 auto;
+}
+
+.detailsedit .item{
+  width: 940px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+}
+
+.detailsedit .item .ingredients,
+.detailsedit .item .preparo{
+  display: flex;
+  flex-direction: column;
+}
+
+.detailsedit .item .content{
+  display: grid;
+  grid-template-columns: 1fr 10%;
+  justify-content: center;
+  align-items: center;
+}
+
+.detailsedit .item label{
+  margin-bottom: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #111111;
+}
+
+.detailsedit .item input{
+  height: 50px;
+  margin: 0;
+  font-size: 18px;
+  border:1px solid #dddddd;
+  border-radius: 4px;
+  background-color: #ffffff;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+span{
+  font-size: 14px;
+  font-weight: bold;
+  color: #919191;
+  text-align: left;
+  margin-left: 5px;
+  cursor: pointer;
+
+}
+
+.detailsedit .item textarea{
+  margin: 0;
+  font-size: 18px;
+  border:1px solid #dddddd;
+  border-radius: 4px;
+  background-color: #ffffff;
+  font-family: "Roboto", sans-serif;
+  padding: 5px;
+  margin-bottom: 50px;
+}
+
+.detailsedit .fields button{
+  font-size: 16px;
+  font-weight: bold;
+  color: #6558C3;
+  margin: 0;
+  padding: 0;
+  margin-top: 15px;
+  text-align: left;
+  background-color: whitesmoke;
+  cursor: pointer;
+}
+

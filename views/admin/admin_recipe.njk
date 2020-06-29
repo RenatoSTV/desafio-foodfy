@@ -1,52 +1,50 @@
-{% extends 'layout.njk' %}
+{% extends 'admin/admin_layout.njk' %}
 
 {% block head %}
-    <link rel="stylesheet" href="recipeIndex.css">
     <title>{{recipe.title}}</title>
 {% endblock head %}
-<body>
-    <header>
-        {% block header %}
-            <div class="logo">
-                <a href="/"><img src="assets\logo.png" alt="LOGO Foodfy"></a>
+
+{% block content %}
+
+    <section class="details">
+            <div class="head">
+                <h1>Receita: {{recipe.title}}</h1>
+                <div class="options">
+                    <a id="return" href="/admin/recipes">Voltar</a>
+                    <a href="/admin/recipes/{{recipe.id}}/edit">Editar receita</a>
+                </div>
             </div>
-            <div class="header-infos">
-                <a href="/about">About</a>
-                <a href="/recipes">Recipes</a>
-            </div>
-        {% endblock header %}
-    </header>
-    {% block content %}
-        <div class="recipe">
+            <div class="recipe">
                 <div id="{{recipe.id}}"></div>
                 <div class="image-content">
-                    <img src="{{recipe.image}}" alt="{{recipe.title}}">
+                    <img src="{{recipe.image_url}}" alt="{{recipe.title}}">
                 </div>
                 <div class="card-infos">
-                    <h2 id>{{recipe.title}}</h2>
-                    <p>por {{recipe.author}}</p>
+                    <h2 id="id">{{recipe.title}}</h2>
+                    <p>por
+                        {{recipe.author}}</p>
                 </div>
-                <div class="ingredients">
-                    <h3>Ingredientes <span class='showhide_btn'>ESCONDER</span></h3>
-                    <ul class='recipe_showhide'>
+                <div class="ingredients" id="ingred">
+                    <h3>🥚 Ingredientes</h3>
+                    <ul>
                         {% for ingredient in recipe.ingredients %}
-                        <li>{{ingredient}}</li>
+                            <li>- {{ingredient}}</li>
                         {% endfor %}
                     </ul>
                 </div>
                 <div class="preparation">
-                    <h3>Modo de preparo <span class='showhide_btn'>ESCONDER</span></h3>
-                    <ul class='recipe_showhide'>
-                    {% for step in recipe.preparation %}
-                        <li>{{step}}</li>
-                    {% endfor %}
+                    <h3>🍳 Modo de preparo</h3>
+                    <ul>
+                        {% for step in recipe.steps %}
+                            <li>- {{step}}</li>
+                        {% endfor %}
                     </ul>
                 </div>
                 <div class="information">
-                    <h3>Informações adicionais <span class='showhide_btn'>ESCONDER</span></h3>
-                    <p class='recipe_showhide'>{{recipe.information}}</p>
+                    <h3>📝 Informações adicionais</h3>
+                    <p>{{recipe.infos}}</p>
                 </div>
             </div>
         </div>
-    {% endblock content %}
-</body>
+    </section>
+{% endblock content %}

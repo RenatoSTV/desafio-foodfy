@@ -1,53 +1,23 @@
-{% extends 'layout.njk' %}
+{% extends 'admin/admin_layout.njk' %}
 
 {% block head %}
-    <link rel="stylesheet" href="/create.css">
     <title>Nova Receita</title>
 {% endblock head %}
 
-{% block header %}
-    <div class="header">
-        <div class="logo">
-            <a href="/"><img src="assets\logo2.png" alt="LOGO Foodfy"></a>
-        </div>
-    </div>
-
-{% endblock header %}
-
 {% block content %}
-    <form method="POST" action="/admin/recipes">
-        <section class="details">
+    <section class="details">
+        <form method="POST" action="/admin/recipes">
             <div class="head">
                 <h1>Criando Receita</h1>
-                <button type="submit">Salvar receita</button>
-            </div>
-
-            <div class="item">
-                <label for="">Imagem da receita</label>
-                <input type="url" name="image_url" placeholder=" Https://">
-            </div>
-
-            <div id="ingredients" class="item">
-                <div class="ingredient">
-                    <label for="">Ingredientes</label>
-                    <input type="text" name="ingredients[]" value="" placeholder=" Ingrediente"/>
+                <div class="options">
+                    <a id="return" href="/admin/recipes">Voltar</a>
+                    <button type="submit">Salvar receita</button>
                 </div>
             </div>
-            <button type="button" class="add-ingredient">Adicionar novo ingrediente</button>
 
-            <div id="preparo" class="item">
-                <div class="preparo">
-                    <label for="">Modo de preparo</label>
-                    <input class="step" type="text" name="steps[]" value="" placeholder=" Preparo"/>
-                </div>
-            </div>
-            <button type="button" class="add-step">Adicionar novo passo</button>
+            {% include "admin/fieldscreate.njk" %}
 
-            <div class="item">
-                <label for="">Informações adicionais</label>
-                <input type="text" name="infos" id="info">
-            </div>
-        </section>
-    </form>
-
+        </form>
+    </section>
+    <script src="/admin_scripts.js"></script>
 {% endblock content %}
