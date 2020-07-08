@@ -5,7 +5,6 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <base href="/">
-        <link rel="stylesheet" href="/admin.css">
         <link rel="icon" type="image/png" sizes="16x16" href="assets\favicon-32x32.png">
         {% block head %}
             <title>Foodfy</title>
@@ -14,16 +13,14 @@
     </head>
     <body>
         <header>
-                <div class="header">
-                    <div class="header-content">
-                        <div class="logo">
-                            <a href="/"><img src="assets\logo2.png" alt="LOGO Foodfy"></a>
-                        </div>
-                            <a id="create" href="/admin/recipes/create">Criar Receita</a>
-                    </div>
-                </div>
+            {% block header %}
+            {% endblock header %}
         </header>
         {% block content %}{% endblock content %}
+        <footer class="footer">
+            <p>All rights reserved, Foodfy recipes</p>
+        </footer>
         
+        <script src="scripts/scripts.js"></script>
     </body>
 </html>

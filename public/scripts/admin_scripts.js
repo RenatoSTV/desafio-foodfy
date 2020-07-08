@@ -38,9 +38,18 @@ const itms = document.querySelectorAll('.ingredient')
 const ingredients = document.querySelector('.ingredients .content')
 const del = document.querySelectorAll('.delete')
 
-for(let i = 0; i < del.length; i++){
-    del[i].addEventListener('click', function(){
+for (let i = 0; i < del.length; i++) {
+    del[i].addEventListener('click', function () {
         ingredients.removeChild(itms[i])
         ingredients.removeChild(del[i])
     })
 }
+
+const formDelete = document.querySelector("#form-delete")
+formDelete.addEventListener("submit", function (event) {
+    const confirmation = confirm("Deseja Deletar?")
+    if (!confirmation) {
+        event.preventDefault()
+
+    }
+})

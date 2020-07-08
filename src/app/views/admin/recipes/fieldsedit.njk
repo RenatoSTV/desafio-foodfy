@@ -1,0 +1,53 @@
+<div class="item">
+    <label for="">Imagem da receita</label>
+    <input type="url" name="image_url" value="{{recipe.image_url}}" placeholder=" Https://">
+</div>
+
+<div class="item">
+    <label for="">Nome da Receita</label>
+    <input type="text" name="title" value="{{recipe.title}}" placeholder=" Ex: Lasanha de Frango">
+</div>
+
+<div class="item">
+    <div>Chef</div>
+    <select name="chef" class="select-css">
+        <option value="">Selecione um Chef</option>
+        {% for chef in chefOptions %}
+        <option 
+        value="{{chef.id}}" 
+        
+        {% if recipe.chef_id == chef.id %} selected {% endif %}>
+            {{chef.name}}
+        </option>
+        {% endfor %}
+    </select>
+</div>
+
+<div id="ingredients" class="item">
+    <div class="ingredients">
+        <label for="">Ingredientes</label>
+        <div class="content">
+        {% for ingredient in recipe.ingredients %}
+            <input class="ingredient" type="text" name="ingredients[]" value="{{ingredient}}" placeholder=" Ex: 1 xicara de açúcar"/>
+            <span class="delete">Excluir</span>
+        {% endfor %}
+        </div>
+    </div>
+</div>
+<button type="button" class="add-ingredient">Adicionar novo ingrediente</button>
+
+<div id="preparo" class="item">
+    <div class="preparo">
+        <label for="">Modo de preparo</label>
+        {% for step in recipe.preparation %}
+        <input class="step" type="text" name="preparation[]" value="{{step}}" placeholder=" Coloque um passo de cada vez..."/>
+        {% endfor %}
+    </div>
+</div>
+<button type="button" class="add-step">Adicionar novo passo</button>
+
+<div class="item">
+    <label for="">Informações adicionais</label>
+    
+    <input type="text" name="information" id="info"value="{{recipe.information}}" placeholder=" Digite alguma informação adicional">
+</div>

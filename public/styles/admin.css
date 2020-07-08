@@ -32,7 +32,20 @@ body {
   margin: 0 auto;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: left;
+}
+
+.header .header-content .header-infos {
+  margin: 0 auto;
+  margin-left: 50px;
+}
+
+.header-infos a {
+  margin-right: 30px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 16px;
+  color: #999999;
 }
 
 .header #create{
@@ -51,12 +64,59 @@ body {
   width: 940px;
   margin: 0 auto;
   margin-bottom: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.details.admin{
+  margin: auto;
+}
+
+.content {
+  width: 940px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  justify-content: center;
+}
+
+.content .chefs,
+.content .recipes{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.content a{
+
+  text-decoration: none;
+}
+
+.content a img{
+  width: 200px;
+}
+
+.content a h2{
+  text-align: center;
+  margin-top: 20px;
+  color: #111111;
 }
 
 .cards {
   width: 940px;
   display: grid;
-  grid-template-columns: 1fr 1fr ;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin: 0 auto;
+  margin-bottom: 50px;
+}
+
+.cards.chefs {
+  width: 940px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   gap: 20px;
   margin: 0 auto;
   margin-bottom: 50px;
@@ -66,18 +126,34 @@ body {
   display: flex;
 }
 
-.card .image-content{
+.cards.recipes .image-content{
   width: 172px;
   height: 80px;
   border-radius: 15px;
   display: block;
 }
 
-.card .image-content img{ 
+.cards.recipes .image-content img{ 
   width: 172px;
   height: 80px;
   border-radius: 15px;
   box-shadow: 6px 6px 8px -4px black;
+}
+
+.cards.chefs .card .image-content{
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  display: block;
+}
+
+.cards.chefs .card .image-content img{
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background-position: center;
+  background-size: cover;
+  box-shadow: none;
 }
 
 .card .card-infos{
@@ -160,6 +236,20 @@ body {
   margin-top: 30px;
 }
 
+.item select{
+  height: 50px;
+  margin: 0;
+  font-size: 18px;
+  color: #666666;
+  border:1px solid #dddddd;
+  border-radius: 4px;
+  padding: 5px;
+  -webkit-appearance: none;
+  background:url("https://img.icons8.com/ios/20/000000/chevron-down.png") no-repeat center right 20px;
+  background-color: #ffffff;
+
+}
+
 .details .item .ingredients,
 .details .item .preparo{
   display: flex;
@@ -202,11 +292,7 @@ body {
   background-color: whitesmoke;
 }
 
-#info{
-  min-height: 250px;
-}
-
-/* -== Mostrar Receita ==- */
+/* -== Mostrar Receita / Mostrar Chef==- */
 
 .head a{
   font-size: 16px;
@@ -324,6 +410,50 @@ span{
   cursor: pointer;
 }
 
+.details .chef{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 940px;
+  margin: 0 auto;
+}
+
+.details .chef img{
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background-position: center;
+  background-size: cover;
+  box-shadow: none;
+  margin-top: 42px;
+}
+
+.details .chef h2{
+  font-size: 36px;
+  font-weight: bold;
+  color: #111111;
+  margin-top: 30px;
+}
+
+.details .chef p{
+  font-size: 20px;
+  color: #777777;
+  margin-top: 5px;
+}
+
+.details .recipes{
+  width: 940px;
+  margin: 0 auto;
+}
+
+.details .recipes h2{
+  margin-top: 50px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #111111;
+}
+
 /* -== Editar receita==- */
 
 .detailsedit{
@@ -434,7 +564,7 @@ span{
 
 }
 
-.detailsedit .item textarea{
+#info {
   margin: 0;
   font-size: 18px;
   border:1px solid #dddddd;
@@ -443,6 +573,7 @@ span{
   font-family: "Roboto", sans-serif;
   padding: 5px;
   margin-bottom: 50px;
+  text-align: start;
 }
 
 .detailsedit .fields button{

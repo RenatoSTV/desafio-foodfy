@@ -1,0 +1,23 @@
+{% extends 'admin/admin_layout.njk' %}
+
+{% block head %}
+    <title>Novo Chef</title>
+{% endblock head %}
+
+{% block content %}
+    <section class="details">
+        <form method="POST" action="/admin/chefs">
+            <div class="head">
+                <h1>Criando Chef</h1>
+                <div class="options">
+                    <a id="return" href="/admin/chefs">Voltar</a>
+                    <button type="submit">Salvar Chef</button>
+                </div>
+            </div>
+
+            {% include "admin/chefs/fields.njk" %}
+
+        </form>
+    </section>
+    <script src="scripts/admin_scripts.js"></script>
+{% endblock content %}

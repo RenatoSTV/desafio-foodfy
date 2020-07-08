@@ -22,7 +22,7 @@
                 <div class="card-infos">
                     <h2 id="id">{{recipe.title}}</h2>
                     <p>por
-                        {{recipe.author}}</p>
+                        {{recipe.chef_name}}</p>
                 </div>
                 <div class="ingredients" id="ingred">
                     <h3>🥚 Ingredientes</h3>
@@ -35,14 +35,14 @@
                 <div class="preparation">
                     <h3>🍳 Modo de preparo</h3>
                     <ul>
-                        {% for step in recipe.steps %}
+                        {% for step in recipe.preparation %}
                             <li>- {{step}}</li>
                         {% endfor %}
                     </ul>
                 </div>
                 <div class="information">
                     <h3>📝 Informações adicionais</h3>
-                    <p>{{recipe.infos}}</p>
+                    <p>{{recipe.information}}</p>
                 </div>
             </div>
         </div>

@@ -9,8 +9,18 @@
 </div>
 
 <div class="item">
-    <label for="">Autor</label>
-    <input type="text" name="author" value="{{recipe.author}}" placeholder=" Digite seu Nome">
+    <div>Chef</div>
+    <select name="chef" class="select-css">
+        <option value="">Selecione um Chef</option>
+        {% for chef in chefOptions %}
+        <option 
+        value="{{chef.id}}" 
+        
+        {% if recipe.chef_id == chef.id %} selected {% endif %}>
+            {{chef.name}}
+        </option>
+        {% endfor %}
+    </select>
 </div>
 
 <div id="ingredients" class="item">
@@ -24,12 +34,12 @@
 <div id="preparo" class="item">
     <div class="preparo">
         <label for="">Modo de preparo</label>
-        <input class="step" type="text" name="steps[]" value="" placeholder=" Coloque um passo de cada vez..."/>
+        <input class="step" type="text" name="preparation[]" value="" placeholder=" Coloque um passo de cada vez..."/>
     </div>
 </div>
 <button type="button" class="add-step">Adicionar novo passo</button>
 
 <div class="item">
     <label for="">Informações adicionais</label>
-    <textarea name="infos" id="info" cols="30" rows="10" placeholder=" Digite alguma informação adicional"></textarea>
+    <textarea name="information" id="info" cols="30" rows="10" placeholder=" Digite alguma informação adicional"></textarea>
 </div>
