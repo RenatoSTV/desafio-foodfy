@@ -28,13 +28,13 @@ routes.delete("/admin/recipes", recipes.delete); // Deletar uma receita -== RECE
 //CHEFS
 
 routes.get("/admin/chefs", chefs.index);
-routes.get("/admin/chefs/create", chefs.create); // Mostrar formulário de nova receita -== RECEBE create.njk ==-
-routes.get("/admin/chefs/:id", chefs.show); // Exibir detalhes de uma  -== RECEBE recipe.njk ==-
-//routes.get("/admin/chefs/:id/edit", chefs.edit); // Mostrar formulário de edição de receita -== RECEBE edit.njk ==-
+routes.get("/admin/chefs/create", chefs.create); // Mostrar formulário de novo chef -== RECEBE create.njk ==-
+routes.get("/admin/chefs/:id", chefs.show); // Exibir detalhes de um chef -== RECEBE show.njk ==-
+routes.get("/admin/chefs/:id/edit", chefs.edit); // Mostrar formulário de edição do chef -== RECEBE edit.njk ==-
 
-routes.post("/admin/chefs", chefs.post); // Cadastrar nova receita -== RECEBE create.njk ==-
-//routes.put("/admin/chefs", chefs.put); // Editar uma receita -== RECEBE edit.njk ==-
-//routes.delete("/admin/chefs", chefs.delete); // Deletar uma receita -== RECEBE edit.njk ==-
+routes.post("/admin/chefs", chefs.post); // Cadastrar novo chef -== RECEBE create.njk ==-
+routes.put("/admin/chefs", chefs.put); // Editar um chef -== RECEBE edit.njk ==-
+routes.delete("/admin/chefs", chefs.delete); // Deletar um chef -== RECEBE edit.njk ==-
 
 
 module.exports = routes

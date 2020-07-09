@@ -126,6 +126,7 @@ body {
   display: flex;
 }
 
+
 .cards.recipes .image-content{
   width: 172px;
   height: 80px;
@@ -452,6 +453,8 @@ span{
   font-size: 24px;
   font-weight: bold;
   color: #111111;
+  
+  margin-bottom: 30px;
 }
 
 /* -== Editar receita==- */

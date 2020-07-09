@@ -12,14 +12,12 @@ module.exports = {
 
     //show
     show(req, res) {
-        Chef.find(req.params.id, function (chef) {
+        Chef.chefShow(req.params.id, function (chef, recipes, totalRecipes) {
             if (!chef) return res.send("Chef not found!")
 
 
-            return res.render("admin/chefs/show", { chef })
+            return res.render("admin/chefs/show", { chef, recipes, totalRecipes  })
         })
-
-
 
     },
 
@@ -40,71 +38,41 @@ module.exports = {
         }
 
         Chef.create(req.body, function (chef) {
-            return res.redirect(`admin/chefs/${chef.id}`)
+            return res.redirect(`/admin/chefs/${chef.id}`)
         })
     },
 
     //edit
     edit(req, res) {
 
-        const { id } = req.params
+        Chef.find(req.params.id, function (chef) {
+            if (!chef) return res.send("Chef not found!")
 
-        const foundRecipe = data.recipes.find(function (recipe) {
-            return recipe.id == id
+            return res.render("admin/chefs/edit", { chef })
         })
 
-        if (!foundRecipe) return res.send("Recipe not found!")
-
-        const recipe = {
-            ...foundRecipe,
-        }
-
-        return res.render("admin/chefs/edit", { recipe })
     },
 
     //put
     put(req, res) {
 
-        const { id } = req.body
-        let index = 0
+        const keys = Object.keys(req.body)
 
-        const foundRecipe = data.recipes.find(function (recipe, foundIndex) {
-            if (id == recipe.id) {
-                index = foundIndex
-                return true
+        for (key of keys) {
+            if (req.body[key] == "") {
+                return res.send("Please, fill all fields")
             }
-        })
-
-        if (!foundRecipe) return res.send("Recipe not found!")
-
-        const recipe = {
-            ...foundRecipe,
-            ...req.body,
-            id: Number(req.body.id)
         }
 
-        data.recipes[index] = recipe
-
-        fs.writeFile("data.json", JSON.stringify(data, null, 2), function (err) {
-            if (err) return res.send("Write error!")
-
-            return res.redirect(`/admin/recipes/${id}`)
+        Chef.put(req.body, function(){
+            return res.redirect(`/admin/chefs/${req.body.id}`)
         })
     },
 
     //delete
     delete(req, res) {
-        const { id } = req.body
-
-        const filteredRecipes = data.recipes.filter(function (recipe) {
-            return recipe.id != id
-        })
-
-        data.recipes = filteredRecipes
-
-        fs.writeFile("data.json", JSON.stringify(data, null, 2), function (err) {
-            if (err) return res.send("Write error!")
-            return res.redirect("/admin/recipes")
+        Chef.delete(req.body.id, function () {
+            return res.redirect(`/admin/chefs`)
         })
     }
 }

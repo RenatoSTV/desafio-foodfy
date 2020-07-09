@@ -21,7 +21,7 @@
             <img src="{{chef.avatar_url}}" alt="{{chef.name}}">
 
             <h2>{{chef.name}}</h2>
-            <p>{{chef.total_recipes}}receitas</p>
+            <p>{{totalRecipes}} receitas</p>
 
         </div>
         <div class="recipes">
@@ -36,7 +36,7 @@
                         <div class="card-infos">
                             <h3 id="id">{{recipe.title}}</h3>
                             <p>por
-                                {{recipe.chef_name}}</p>
+                                {{chef.name}}</p>
                             <a href="/admin/recipes/{{recipe.id}}" class="visualizar">Visualizar</a>
                         </div>
                     </div>
