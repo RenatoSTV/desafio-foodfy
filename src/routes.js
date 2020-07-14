@@ -10,7 +10,8 @@ const website = require('./app/controllers/website')
 routes.get("/", website.index)
 routes.get("/about", website.about)
 routes.get("/recipes", website.recipes)
-routes.get("/:index", website.recipe)
+routes.get("/chefs", website.chefs)
+routes.get("/:id", website.recipe)
 
 // ADMIN
 routes.get("/admin/index", admin.index); // Mostrar a lista de receitas -== RECEBE recipes.njk ==-

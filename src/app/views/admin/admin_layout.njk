@@ -20,16 +20,13 @@
                         <a href="/"><img src="assets\logo2.png" alt="LOGO Foodfy"></a>
                     </div>
                     <div class="header-infos">
-                        <a href="/admin/recipes">RECIPES</a>
                         <a href="/admin/chefs">CHEFS</a>
-                        {% block link %}
-                            {# <a id="create" href="/admin/recipes/create">Criar Receita</a> #}
-                        {% endblock link %}
+                        <a href="/admin/recipes">RECIPES</a>
                     </div>
                 </div>
             </div>
         </header>
         {% block content %}{% endblock content %}
-
+        <script src="scripts/admin_scripts.js"></script>
     </body>
 </html>

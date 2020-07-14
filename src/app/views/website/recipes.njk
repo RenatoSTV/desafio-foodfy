@@ -1,39 +1,47 @@
 {% extends 'website/layout.njk' %}
 
 {% block head %}
-    <link rel="stylesheet" href="styles/recipes.css">
+    <link rel="stylesheet" href="styles/foodfy.css">
 
     <title>Recipes</title>
 {% endblock head %}
-<body>
-    <header>
-        {% block header %}
-            <div class="logo">
-                <a href="/"><img src="assets\logo.png" alt="LOGO Foodfy"></a>
-            </div>
-            <div class="header-infos">
-                <a href="/about">About</a>
-                <a href="#">
-                    <strong>Recipes</strong>
-                </a>
-            </div>
-        {% endblock header %}
-    </header>
-    {% block content %}
-        <section class="cards">
+{% block header %}
+    <div class="search">
+        <form action="/recipes/?" method="GET" class="class">
+            <input type="text" name="filter" placeholder="Buscar uma receita" value="{{filter}}">
+            <button type="submit">Buscar</button>
+        </form>
+    </div>
+{% endblock header %}
 
-            {% for recipe in recipes %}
+{% block content %}
+
+    <div class="title">
+        <h2>Receitas</h2>
+    </div>
+    <section class="cards">
+
+        {% for recipe in recipes %}
             <div class="card" id="{{recipe.id}}">
                 <div class="image-content">
+                    <div class="look">
+                        <a href="/{{recipe.id}}" class="visualizar">Visualizar</a>
+                    </div>
                     <img src="{{recipe.image_url}}" alt="{{recipe.title}}">
                 </div>
                 <div class="card-infos">
-                    <h3 id>{{recipe.title}}</h3>
-                    <p>por {{recipe.author}}</p>
+                    <h3 id="id">{{recipe.title}}</h3>
+                    <p>por
+                        {{recipe.chef_name}}</p>
                 </div>
             </div>
-            {% endfor %}
+        {% endfor %}
 
-        </section>
-    {% endblock content %}
-</body>
+    </section>
+
+    <div class="pagination" 
+    data-page={{pagination.page}} 
+    data-total={{pagination.total}} 
+    data-filter={{filter}}></div>
+    
+{% endblock content %}

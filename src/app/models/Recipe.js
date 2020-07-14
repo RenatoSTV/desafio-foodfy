@@ -4,9 +4,11 @@ const db = require('../../config/db')
 module.exports = {
     all(callback){
 
-        db.query(`SELECT * FROM recipes`, function(err, results){
+        db.query(`SELECT recipes.*,  chefs.name AS chef_name 
+        FROM recipes
+        LEFT JOIN chefs
+        ON (chefs.id = recipes.chef_id)`, function(err, results){
             if(err) throw `DATABASE error! ${err}`
-
             callback(results.rows)
         })
 
@@ -53,6 +55,19 @@ module.exports = {
             callback(results.rows[0])
         })
     },
+    findBy(filter, callback){
+        db.query(`
+            SELECT recipes.*, chefs.name AS chef_name 
+            FROM recipes
+            LEFT JOIN chefs ON (chef.id = recipes.chef_id)
+            WHERE recipe.title ILIKE '%${filter}%'
+            GROUP BY recipes.name, chef.id`, function(err, results){
+                if(err) throw `DATABASE error! ${err}`
+
+                callback(results.rows)
+            })
+    },
+    
     put(data, callback){
         const query = `
             UPDATE recipes SET
@@ -92,6 +107,43 @@ module.exports = {
     chefsSelectOptions(callback){
         db.query(`SELECT name, id FROM chefs`, function(err, results){
             if(err) throw `DATABASE error! ${err}`
+
+            callback(results.rows)
+        })
+    },
+    paginate(params) {
+        const { filter, limit, offset, callback } = params
+
+        let query = "",
+            filterQuery = "",
+            totalQuery = `(
+                SELECT count(*) FROM recipes
+            ) AS total`
+
+
+
+        if (filter) {
+
+            filterQuery = `${query}
+            WHERE recipes.title ILIKE '%${filter}%'
+            `
+
+            totalQuery = `(
+                SELECT count(*) FROM recipes
+                ${filterQuery}
+            ) as total`
+        }
+
+        query = `
+        SELECT recipes.*,${totalQuery}, chefs.name AS chef_name 
+        FROM recipes
+        LEFT JOIN chefs ON (chefs.id = recipes.chef_id)
+        ${filterQuery}
+        LIMIT $1 OFFSET $2
+        `
+
+        db.query(query, [limit, offset], function (err, results) {
+            if (err) throw `DATABASE error! ${err}`
 
             callback(results.rows)
         })

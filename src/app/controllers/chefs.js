@@ -12,11 +12,22 @@ module.exports = {
 
     //show
     show(req, res) {
-        Chef.chefShow(req.params.id, function (chef, recipes, totalRecipes) {
-            if (!chef) return res.send("Chef not found!")
+        Chef.chefShow(req.params.id, function (chef, recipes, totalRecipes, chefId) {
+            console.log(chefId)
+            if(chef.id == null){
 
+                totalRecipes = 0
+                Chef.find(req.params.id, function (chef) {
+                    if (!chef) return res.send("Chef not found!")
+        
+                    return res.render("admin/chefs/show", { chef, totalRecipes, chefId })
+                })
+            } else{
+                if (!chef) return res.send("Chef not found!")
 
-            return res.render("admin/chefs/show", { chef, recipes, totalRecipes  })
+            return res.render("admin/chefs/show", { chef, recipes, totalRecipes, chefId  })
+            }
+            
         })
 
     },
@@ -45,11 +56,31 @@ module.exports = {
     //edit
     edit(req, res) {
 
-        Chef.find(req.params.id, function (chef) {
-            if (!chef) return res.send("Chef not found!")
+        // Chef.find(req.params.id, function (chef) {
+        //     if (!chef) return res.send("Chef not found!")
+        //     console.log(chef)
+        //     return res.render("admin/chefs/edit", { chef })
+        // })
 
-            return res.render("admin/chefs/edit", { chef })
+        Chef.chefShow(req.params.id, function (chef, recipes, totalRecipes, chefId) {
+            console.log(chef)
+            if(chef.id == null){
+
+                totalRecipes = 0
+                Chef.find(req.params.id, function (chef) {
+                    console.log(chef)
+                    if (!chef) return res.send("Chef not found!")
+                    
+                    return res.render("admin/chefs/edit", { chef, totalRecipes, chefId })
+                })
+            } else{
+                if (!chef) return res.send("Chef not found!")
+                
+            return res.render("admin/chefs/edit", { chef, recipes, totalRecipes, chefId  })
+            }
+            
         })
+        
 
     },
 
@@ -76,3 +107,9 @@ module.exports = {
         })
     }
 }
+
+// if(recipes.id == null ){
+//     let recipes = false
+// } else {
+//     recipes = false
+// }

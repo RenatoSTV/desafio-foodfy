@@ -1,0 +1,20 @@
+<script>
+    if({{totalRecipes}} == 0){
+        const formDelete = document.querySelector("#form-delete")
+        formDelete.addEventListener("submit", function(event){
+            const confirmation = confirm("Deseja Deletar?")
+            if(!confirmation){
+                event.preventDefault()
+            
+            }
+        })
+    } else {
+        const formDelete = document.querySelector("#form-delete")
+        formDelete.addEventListener("submit", function(event){
+            event.preventDefault()
+            alert("Chef NÃO pode ser deletado!")
+        })
+    }
+    
+
+</script>

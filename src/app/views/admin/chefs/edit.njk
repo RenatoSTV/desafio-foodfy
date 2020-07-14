@@ -12,16 +12,16 @@
 
         <div class="forms">
             <form id="form-delete" action="/admin/chefs?_method=DELETE" method="post">
-                <input type="hidden" name="id" value="{{chef.id}}">
+                <input type="hidden" name="id" value="{{chefId}}">
             </form>
             <form action="/admin/chefs?_method=PUT" method="post">
 
-                <input type="hidden" name="id" value="{{chef.id}}">
+                <input type="hidden" name="id" value="{{chefId}}">
                 <div class="head">
 
-                    <h1>Editar Receita</h1>
+                    <h1>Editar Chef</h1>
                     <div class="buttons">
-                        <a id="return" href="/admin/chefs/{{chef.id}}">Voltar</a>
+                        <a id="return" href="/admin/chefs/{{chefId}}">Voltar</a>
                         <button id="del" form="form-delete" type="submit">Deletar</button>
                         <button id="save" type="submit">Salvar Chef</button>
                     </div>
@@ -31,6 +31,7 @@
                     {% include "admin/chefs/fields.njk" %}
                 </div>
             </form>
+            {% include 'admin/chefs/confirm.njk' %}
         </div>
 
     </section>

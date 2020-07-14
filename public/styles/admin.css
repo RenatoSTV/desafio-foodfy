@@ -46,6 +46,15 @@ body {
   font-weight: bold;
   font-size: 16px;
   color: #999999;
+  transition: 350ms;
+}
+
+.header-infos a:hover {
+  color: #ffffff;
+}
+
+.header-infos a.active {
+  color: #ffffff;
 }
 
 .header #create{
@@ -73,7 +82,7 @@ body {
   margin: auto;
 }
 
-.content {
+.details.admin .content {
   width: 940px;
   margin: 0 auto;
   display: grid;
@@ -82,23 +91,27 @@ body {
   justify-content: center;
 }
 
-.content .chefs,
-.content .recipes{
+.details.admin .content .chefs{
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
+.details.admin .content .recipes{
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.content a{
+.details.admin .content a{
 
   text-decoration: none;
 }
 
-.content a img{
+.details.admin .content a img{
   width: 200px;
 }
 
-.content a h2{
+.details.admin .content a h2{
   text-align: center;
   margin-top: 20px;
   color: #111111;
@@ -443,12 +456,12 @@ span{
   margin-top: 5px;
 }
 
-.details .recipes{
+.details .recipesShow{
   width: 940px;
   margin: 0 auto;
 }
 
-.details .recipes h2{
+.details .recipesShow h2{
   margin-top: 50px;
   font-size: 24px;
   font-weight: bold;

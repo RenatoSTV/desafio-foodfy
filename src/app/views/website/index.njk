@@ -1,46 +1,51 @@
 {% extends 'website/layout.njk' %}
 
 {% block head %}
-    <link rel="stylesheet" href="styles/home.css">
+    <link rel="stylesheet" href="styles/foodfy.css">
 
     <title>Foodfy</title>
 {% endblock head %}
-<body>
-    <header>
-        {% block header %}
-            <div class="logo">
-                <a href="#"><img src="/assets/logo.png" alt="LOGO Foodfy"></a>
-            </div>
-            <div class="header-infos">
-                <a href="/about">About</a>
-                <a href="/recipes">Recipes</a>
-                <a class="adm" href="/admin/index">Administração</a>
-            </div>
-        {% endblock header %}
-    </header>
-    {% block content %}
-        <div class="main">
-            <div class="info">
-                <h1>The best recipes</h1>
-                <p>Lear how to coock the best plates with recipes created by professionals from all over the world.
-                </p>
-            </div>
-            <img src="/assets/chef.png" alt="chef">
+
+{% block header %}
+    <div class="header-infos adm">
+        <a class="adm" href="/admin/index">Administração</a>
+    </div>
+    <div class="search">
+        <form action="/recipes/?" method="GET" class="class">
+            <input type="text" name="filter" placeholder="Buscar uma receita" value="{{filter}}">
+            <button type="submit">Buscar</button>
+        </form>
+    </div>
+{% endblock header %}
+
+{% block content %}
+    <div class="main">
+        <div class="info">
+            <h1>As melhores receitas</h1>
+            <p>Aprenda a construir os melhores pratos com receitas criadas por profissionais do mundo inteiro.
+            </p>
         </div>
-        <h2>Most accessed</h2>
-        <section class="cards">
-            {% for recipe in recipes %}
-                <div class="card" id="{{recipe.id}}">
-                    <div class="image-content">
-                        <img src="{{recipe.image_url}}" alt="{{recipe.title}}">
+        <img src="/assets/chef.png" alt="chef">
+    </div>
+    <div class="title">
+        <h2>Mais acessadas</h2>
+    </div>
+    <section class="cards">
+        {% for recipe in recipes %}
+            <div class="card" id="{{recipe.id}}">
+                <input type="hidden" name="id" value="{{recipe.id}}">
+                <div class="image-content">
+                    <div class="look">
+                        <a href="/{{recipe.id}}" class="visualizar">Visualizar</a>
                     </div>
-                    <div class="card-infos">
-                        <h3 id="id">{{recipe.title}}</h3>
-                        <p>por
-                            {{recipe.author}}</p>
-                    </div>
+                    <img src="{{recipe.image_url}}" alt="{{recipe.title}}">
                 </div>
-            {% endfor %}
-        </section>
-    {% endblock content %}
-</body>
+                <div class="card-infos">
+                    <h3>{{recipe.title}}</h3>
+                    <p>por
+                        {{recipe.chef_name}}</p>
+                </div>
+            </div>
+        {% endfor %}
+    </section>
+{% endblock content %}

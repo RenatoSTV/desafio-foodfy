@@ -10,7 +10,6 @@
             <div class="head">
                 <h1>Receita: {{recipe.title}}</h1>
                 <div class="options">
-                    <a id="return" href="/admin/recipes">Voltar</a>
                     <a href="/admin/recipes/{{recipe.id}}/edit">Editar receita</a>
                 </div>
             </div>
@@ -21,8 +20,7 @@
                 </div>
                 <div class="card-infos">
                     <h2 id="id">{{recipe.title}}</h2>
-                    <p>por
-                        {{recipe.chef_name}}</p>
+                    <p>por {{recipe.chef_name}}</p>
                 </div>
                 <div class="ingredients" id="ingred">
                     <h3>🥚 Ingredientes</h3>

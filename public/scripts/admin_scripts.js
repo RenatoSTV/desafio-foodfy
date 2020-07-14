@@ -1,3 +1,12 @@
+const currentPage = location.pathname
+const menuItems = document.querySelectorAll(".header-infos a")
+
+for (item of menuItems) {
+    if (currentPage.includes(item.getAttribute("href"))) {
+        item.classList.add("active")
+    }
+}
+
 function addIngredient() {
     const ingredients = document.querySelector("#ingredients");
     const fieldContainer = document.querySelectorAll(".ingredient");
