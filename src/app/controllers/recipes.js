@@ -1,10 +1,12 @@
 const Recipe = require('../models/Recipe')
+const File = require('../models/File')
+const Chef = require('../models/Chef')
 
 module.exports = {
     //index
-    index(req,res){
+    index(req, res) {
         Recipe.all(function (recipes) {
-            
+
             return res.render("admin/recipes/index", { recipes })
         })
 
@@ -12,8 +14,8 @@ module.exports = {
 
     //show
     show(req, res) {
-        Recipe.find(req.params.id, function(recipe){
-            if(!recipe) return res.send("Student not found!")
+        Recipe.find(req.params.id, function (recipe) {
+            if (!recipe) return res.send("Student not found!")
 
             return res.render("admin/recipes/show", { recipe })
         })
@@ -23,15 +25,28 @@ module.exports = {
     //create
     create(req, res) {
 
-        Recipe.chefsSelectOptions(function(options){
-            return res.render("admin/recipes/create", {chefOptions: options})
+        Chef.all()
+        .then(function(results){
+
+            const chefs = results.rows
+
+            return res.render("admin/recipes/create", {chefs})
+
+        }).catch(function(err){
+
+            throw new Error(err)
 
         })
-        
+
+        // Recipe.chefsSelectOptions(function (options) {
+        //     return res.render("admin/recipes/create", { chefOptions: options })
+
+        // })
+
     },
 
     //post
-    post(req, res) {
+    async post(req, res) {
         const keys = Object.keys(req.body)
 
         for (key of keys) {
@@ -40,20 +55,31 @@ module.exports = {
             }
         }
 
-        Recipe.create(req.body, function(recipe){
-            return res.redirect(`/admin/recipes/${recipe.id}`)
-        })
+        if (req.files.length == 0)
+            return res.send('Please, send at least one image.')
+
+        let results = await Recipe.create(req.body)
+        const RecipeId = results.rows[0].id
+
+        const filesPromise = req.files.map(file => File.create({ ...file}))
+        await Promise.all(filesPromise)
+
+        return res.redirect(`/admin/recipes/${RecipeId}`)
+
+        // Recipe.create(req.body, function(recipe){
+        //     return res.redirect(`/admin/recipes/${recipe.id}`)
+        // })
     },
 
     //edit
     edit(req, res) {
 
-        Recipe.find(req.params.id, function(recipe){
-            if(!recipe) return res.send("Recipe not found!")
+        Recipe.find(req.params.id, function (recipe) {
+            if (!recipe) return res.send("Recipe not found!")
 
-            Recipe.chefsSelectOptions(function(options){
-    
-                return res.render("admin/recipes/edit", { recipe, chefOptions: options})
+            Recipe.chefsSelectOptions(function (options) {
+
+                return res.render("admin/recipes/edit", { recipe, chefOptions: options })
             })
         })
     },
@@ -65,12 +91,12 @@ module.exports = {
 
         for (key of keys) {
             if (req.body[key] == "") {
-                console.log(req.body)
+
                 return res.send("Please, fill all fields")
             }
         }
 
-        Recipe.put(req.body, function(){
+        Recipe.put(req.body, function () {
             return res.redirect(`/admin/recipes/${req.body.id}`)
         })
     },

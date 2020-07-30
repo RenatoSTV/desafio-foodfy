@@ -6,7 +6,7 @@
 
 {% block content %}
     <section class="details">
-        <form method="POST" action="/admin/recipes">
+        <form method="POST" action="/admin/recipes" enctype="multipart/form-data">
             <div class="head">
                 <h1>Criando Receita</h1>
                 <div class="options">
@@ -19,5 +19,4 @@
 
         </form>
     </section>
-    <script src="scripts/admin_scripts.js"></script>
 {% endblock content %}

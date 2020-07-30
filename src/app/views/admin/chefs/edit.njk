@@ -14,7 +14,7 @@
             <form id="form-delete" action="/admin/chefs?_method=DELETE" method="post">
                 <input type="hidden" name="id" value="{{chefId}}">
             </form>
-            <form action="/admin/chefs?_method=PUT" method="post">
+            <form action="/admin/chefs?_method=PUT" method="post" enctype="multipart/form-data">
 
                 <input type="hidden" name="id" value="{{chefId}}">
                 <div class="head">

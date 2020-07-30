@@ -1,5 +1,6 @@
 const express = require('express')
 const routes = express.Router()
+const multer = require('./app/middlewares/multer')
 const admin = require('./app/controllers/admin')
 const recipes = require('./app/controllers/recipes')
 const chefs = require('./app/controllers/chefs')
@@ -22,8 +23,8 @@ routes.get("/admin/recipes/create", recipes.create); // Mostrar formulário de n
 routes.get("/admin/recipes/:id", recipes.show); // Exibir detalhes de uma  -== RECEBE recipe.njk ==-
 routes.get("/admin/recipes/:id/edit", recipes.edit); // Mostrar formulário de edição de receita -== RECEBE edit.njk ==-
 
-routes.post("/admin/recipes", recipes.post); // Cadastrar nova receita -== RECEBE create.njk ==-
-routes.put("/admin/recipes", recipes.put); // Editar uma receita -== RECEBE edit.njk ==-
+routes.post("/admin/recipes", multer.array("photos", 5), recipes.post); // Cadastrar nova receita -== RECEBE create.njk ==-
+routes.put("/admin/recipes", multer.array("photos", 5), recipes.put); // Editar uma receita -== RECEBE edit.njk ==-
 routes.delete("/admin/recipes", recipes.delete); // Deletar uma receita -== RECEBE edit.njk ==-
 
 //CHEFS
@@ -33,8 +34,8 @@ routes.get("/admin/chefs/create", chefs.create); // Mostrar formulário de novo 
 routes.get("/admin/chefs/:id", chefs.show); // Exibir detalhes de um chef -== RECEBE show.njk ==-
 routes.get("/admin/chefs/:id/edit", chefs.edit); // Mostrar formulário de edição do chef -== RECEBE edit.njk ==-
 
-routes.post("/admin/chefs", chefs.post); // Cadastrar novo chef -== RECEBE create.njk ==-
-routes.put("/admin/chefs", chefs.put); // Editar um chef -== RECEBE edit.njk ==-
+routes.post("/admin/chefs", multer.array("photos", 1), chefs.post); // Cadastrar novo chef -== RECEBE create.njk ==-
+routes.put("/admin/chefs", multer.array("photos", 1), chefs.put); // Editar um chef -== RECEBE edit.njk ==-
 routes.delete("/admin/chefs", chefs.delete); // Deletar um chef -== RECEBE edit.njk ==-
 
 

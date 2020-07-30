@@ -20,7 +20,7 @@ module.exports = {
                         mostAcesseds.push(recipe)
                     }
                 }
-                console.log(mostAcesseds)
+                
                 return res.render("website/index", { recipes: mostAcesseds })
             })
         }
@@ -57,7 +57,6 @@ module.exports = {
                     total: mathTotal,
                     page
                 }
-                console.log(recipes)
                 return res.render("website/recipes", { recipes, pagination, filter })
             }
         }
@@ -77,7 +76,7 @@ module.exports = {
     recipe(req, res) {
         Recipe.find(req.params.id, function (recipe) {
             if (!recipe) return res.send("Recipe not found!")
-            console.log(recipe)
+            
             return res.render("website/recipe", { recipe })
         })
 

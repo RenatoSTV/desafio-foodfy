@@ -5,6 +5,16 @@
 
 <div class="item">
     <label for="">Avatar</label>
-    <input type="url" name="avatar_url" value="{{chef.avatar_url}}" placeholder=" Https://">
+    <div id="photos-upload-chef" class="button">
+            <p>Enviar Avatar</p>
+            <input 
+            id="photos-input"
+            type="file" 
+            name="photos" 
+            multiple
+            accept="image/*"
+            onchange="PhotosUpload.handleFileInput(event)"
+            >
+        </div>
 </div>
 

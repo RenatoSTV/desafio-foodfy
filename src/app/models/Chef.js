@@ -2,15 +2,11 @@ const { date } = require('../../lib/utils')
 const db = require('../../config/db')
 
 module.exports = {
-    all(callback) {
+    all() {
 
-        db.query(`SELECT *
-        FROM chefs
-        `, function (err, results) {
-            if (err) throw `DATABASE error! ${err}`
-
-            callback(results.rows, results.rowCount)
-        })
+        return db.query(`
+            SELECT *FROM chefs
+        `)
 
     },
     create(data, callback) {

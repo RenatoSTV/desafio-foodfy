@@ -4,8 +4,17 @@ module.exports = {
     //index
     index(req, res) {
 
-        Chef.all(function (chefs) {
+        Chef.all()
+        .then(function(results){
+
+            const chefs = results.rows
+
             return res.render("admin/chefs/index", { chefs })
+
+        }).catch(function(err){
+
+            throw new Error(err)
+
         })
 
     },
@@ -13,7 +22,7 @@ module.exports = {
     //show
     show(req, res) {
         Chef.chefShow(req.params.id, function (chef, recipes, totalRecipes, chefId) {
-            console.log(chefId)
+            
             if(chef.id == null){
 
                 totalRecipes = 0
@@ -63,12 +72,12 @@ module.exports = {
         // })
 
         Chef.chefShow(req.params.id, function (chef, recipes, totalRecipes, chefId) {
-            console.log(chef)
+            
             if(chef.id == null){
 
                 totalRecipes = 0
                 Chef.find(req.params.id, function (chef) {
-                    console.log(chef)
+                    
                     if (!chef) return res.send("Chef not found!")
                     
                     return res.render("admin/chefs/edit", { chef, totalRecipes, chefId })
