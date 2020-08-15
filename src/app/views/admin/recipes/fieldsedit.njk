@@ -1,6 +1,32 @@
 <div class="item">
     <label for="">Imagem da receita</label>
-    <input type="url" name="image_url" value="{{recipe.image_url}}" placeholder=" Https://">
+    <div class="photos">
+        <div id="photos-upload">
+            <i class="material-icons">
+                add
+            </i>
+            <input 
+                id="photos-input" 
+                type="file" 
+                name="photos" 
+                multiple="multiple" 
+                accept="image/*" 
+                onchange="PhotosUpload.handleFileInput(event)"
+            >
+        </div>
+        <div id="photos-preview">
+            {% if files %}
+                {% for image in files %}
+                    <div class="photo" id="{{image.id}}">
+                        <img src="{{image.src}}" alt="{{image.name}}">
+                        <i class="material-icons" onclick="PhotosUpload.removeOldPhoto(event)">close</i>
+                    </div>
+                {% endfor %}
+                <input type="hidden" name="removed_files">
+            {% endif %}
+        </div>
+    </div>
+
 </div>
 
 <div class="item">
@@ -11,14 +37,11 @@
 <div class="item">
     <div>Chef</div>
     <select name="chef" class="select-css">
-        <option value="">Selecione um Chef</option>
-        {% for chef in chefOptions %}
-        <option 
-        value="{{chef.id}}" 
-        
-        {% if recipe.chef_id == chef.id %} selected {% endif %}>
-            {{chef.name}}
-        </option>
+        <option >Selecione um Chef</option>
+        {% for chef in chefs %}
+            <option value="{{chef.id}}" {% if recipe.chef_id == chef.id %} selected="selected" {% endif %}>
+                {{chef.name}}
+            </option>
         {% endfor %}
     </select>
 </div>
@@ -27,10 +50,10 @@
     <div class="ingredients">
         <label for="">Ingredientes</label>
         <div class="content">
-        {% for ingredient in recipe.ingredients %}
-            <input class="ingredient" type="text" name="ingredients[]" value="{{ingredient}}" placeholder=" Ex: 1 xicara de açúcar"/>
-            <span class="delete">Excluir</span>
-        {% endfor %}
+            {% for ingredient in recipe.ingredients %}
+                <input class="ingredient" type="text" name="ingredients[]" value="{{ingredient}}" placeholder=" Ex: 1 xicara de açúcar"/>
+                <span class="delete">Excluir</span>
+            {% endfor %}
         </div>
     </div>
 </div>
@@ -40,7 +63,7 @@
     <div class="preparo">
         <label for="">Modo de preparo</label>
         {% for step in recipe.preparation %}
-        <input class="step" type="text" name="preparation[]" value="{{step}}" placeholder=" Coloque um passo de cada vez..."/>
+            <input class="step" type="text" name="preparation[]" value="{{step}}" placeholder=" Coloque um passo de cada vez..."/>
         {% endfor %}
     </div>
 </div>
@@ -48,6 +71,6 @@
 
 <div class="item">
     <label for="">Informações adicionais</label>
-    
-    <input type="text" name="information" id="info"value="{{recipe.information}}" placeholder=" Digite alguma informação adicional">
+
+    <input type="text" name="information" id="info" value="{{recipe.information}}" placeholder=" Digite alguma informação adicional">
 </div>

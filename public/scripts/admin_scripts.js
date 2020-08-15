@@ -7,6 +7,8 @@ for (item of menuItems) {
     }
 }
 
+// ADICIONAR INGREDIENTES E PREPARO
+
 function addIngredient() {
     const ingredients = document.querySelector("#ingredients");
     const fieldContainer = document.querySelectorAll(".ingredient");
@@ -37,11 +39,6 @@ function addStep() {
     newField.value = "";
     preparo.appendChild(newField);
 }
-
-document.querySelector(".add-ingredient").addEventListener("click", addIngredient);
-
-document.querySelector(".add-step").addEventListener("click", addStep)
-
 
 itms = document.querySelectorAll('.ingredient')
 ingredients = document.querySelector('.ingredients .content')
@@ -190,4 +187,23 @@ ImageGallery = {
         Lightbox.image.src = target.src
     }
 
+}
+
+Lightbox = {
+    target: document.querySelector('.lightbox-target'),
+    image: document.querySelector('.lightbox-target img'),
+    closeButton: document.querySelector('.lightbox-target a.lightbox-close'),
+    open() {
+        Lightbox.target.style.opacity = 1
+        Lightbox.target.style.top = 0
+        Lightbox.target.style.bottom = 0
+        Lightbox.closeButton.style.top = 0
+
+    },
+    close() {
+        Lightbox.target.style.opacity = 0
+        Lightbox.target.style.top = "-100%"
+        Lightbox.target.style.bottom = "inicial"
+        Lightbox.closeButton.style.top = "-80px"
+    }
 }

@@ -15,7 +15,18 @@
                 </div>
             </div>
 
-            {% include "admin/chefs/fields.njk" %}
+            <div class="item">
+                <label for="">Nome</label>
+                <input type="text" name="name" value="{{chef.name}}" placeholder="Digite um nome">
+            </div>
+
+            <div class="item">
+                <label for="">Avatar</label>
+                <div id="photos-upload-chef" class="button">
+                    <p>Enviar Avatar</p>
+                    <input id="photos-input" type="file" name="photos" multiple="multiple" accept="image/*" onchange="PhotosUpload.handleFileInput(event)">
+                </div>
+            </div>
 
         </form>
     </section>

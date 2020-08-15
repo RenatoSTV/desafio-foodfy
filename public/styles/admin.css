@@ -351,8 +351,6 @@ body {
   font-size: 36px;
   font-weight: bold;
   color: #111111;
-  margin: 0;
-  margin-top: 50px;
 }
 
 .card-infos p{
@@ -605,6 +603,12 @@ span{
 }
 
 /* PHOTOS UPLOAD */
+form .item .photos{
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  justify-content: center;
+}
 
 form .item #photos-upload {
   position: relative;
@@ -616,6 +620,7 @@ form .item #photos-upload {
   height: 150px;
 
   border: 1px solid #dddddd;
+  border-radius: 3.5px;
 }
 
 form .item #photos-upload i{
@@ -654,7 +659,7 @@ form .item #photos-preview{
   grid-template-columns: repeat(5, 1fr);
   gap: 8px;
   width: 100%;
-  margin: 8px 0;
+  margin-left: 10px;
 }
 
 form .item #photos-preview img {
@@ -753,4 +758,105 @@ form .item #photos-upload-chef #photos-input {
   opacity: 0;
   
   cursor: pointer;
+}
+
+.detailsedit .item #oldFile{
+  width: 100%;
+  height: 50px;
+  margin: 0;
+  font-size: 18px;
+  border:1px solid #dddddd;
+  border-radius: 4px;
+  background-color: #ffffff;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+.highlight > img{
+  width: 100%;
+  height: 280px;
+
+  object-fit: cover;
+  object-position: 50% 50%;
+  border: 1px solid #efefef;
+  cursor: zoom-in;
+  border-radius: 15px;
+}
+
+.gallery-preview{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.gallery-preview img{
+  height: 50px;
+  width: 50px;
+
+  object-fit: cover;
+  opacity: 0.6;
+
+  cursor: pointer;
+
+  transition: 200ms;
+  border-radius: 3.5px;
+
+  margin-left: 2px;
+}
+
+.gallery-preview img:hover,
+.gallery-preview img.active{
+  opacity: 1;
+}
+
+.highlight .lightbox-target{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.7);
+
+  overflow: hidden;
+  z-index: 100;
+
+  top: -100%;
+  left: 0;
+  opacity: 0;
+
+  transition: opacity 400ms;
+}
+
+.highlight .lightbox-target img{
+  margin: auto;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+
+  background-color: white;
+  box-shadow: 0px 0px 8px rgba(0,0,0,0.3);
+
+  width: 90%;
+  height: 90%;
+
+  object-fit: contain;
+}
+
+.highlight a.lightbox-close{
+  width: 50px;
+  height: 50px;
+
+  background: white;
+
+  position: absolute;
+  top: -80px;
+  right: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: 400ms;
+
 }

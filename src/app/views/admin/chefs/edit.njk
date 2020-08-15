@@ -11,7 +11,7 @@
     <section class="detailsedit">
 
         <div class="forms">
-            <form id="form-delete" action="/admin/chefs?_method=DELETE" method="post">
+            <form id="form-delete" action="/admin/chefs?_method=DELETE" method="post" enctype="multipart/form-data">
                 <input type="hidden" name="id" value="{{chefId}}">
             </form>
             <form action="/admin/chefs?_method=PUT" method="post" enctype="multipart/form-data">
@@ -28,7 +28,21 @@
                 </div>
 
                 <div class="fields">
-                    {% include "admin/chefs/fields.njk" %}
+                    <div class="item">
+                        <label for="">Nome</label>
+                        <input type="text" name="name" value="{{chef.name}}" placeholder="Digite um nome">
+                    </div>
+
+                    <div class="item">
+                        <label for="">Avatar</label>
+                        <div class="oldFile">
+                            <input type="text" name="" id="oldFile" placeholder="{{files[0].name}}">
+                        </div>
+                        <div id="photos-upload-chef" class="button">
+                            <p>Mudar Avatar</p>
+                            <input id="photos-input" type="file" name="photos" multiple="multiple" accept="image/*" onchange="PhotosUpload.handleFileInput(event)">
+                        </div>
+                    </div>
                 </div>
             </form>
             {% include 'admin/chefs/confirm.njk' %}

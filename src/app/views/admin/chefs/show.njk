@@ -18,7 +18,7 @@
         <div class="chef">
             <div id="{{chefId}}"></div>
 
-            <img src="{{chef.avatar_url}}" alt="{{chef.name}}">
+            <img src="{{files[0].src}}" alt="{{files[0].name}}">
 
             <h2>{{chef.name}}</h2>
             <p>{{totalRecipes}}
@@ -33,7 +33,7 @@
                     {% for recipe in recipes %}
                         <div class="card">
                             <div class="image-content">
-                                <img src="{{recipe.image_url}}" alt="{{recipe.title}}">
+                                <img src="{{recipe.img}}" alt="{{recipe.title}}">
                             </div>
                             <div class="card-infos">
                                 <h3 id="id">{{recipe.title}}</h3>
