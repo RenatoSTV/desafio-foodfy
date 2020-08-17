@@ -51,22 +51,6 @@ for (let i = 0; i < del.length; i++) {
     })
 }
 
-formDelete = document.querySelector("#form-delete")
-
-function Delete() {
-    formDelete.addEventListener("submit", function (event) {
-        const confirmation = confirm("Deseja Deletar?")
-        if (!confirmation) {
-            event.preventDefault()
-        }
-    })
-
-}
-
-if (formDelete) {
-    Delete()
-}
-
 PhotosUpload = {
     input: "",
     preview: document.querySelector('#photos-preview'),
