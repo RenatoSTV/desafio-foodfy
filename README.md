@@ -13,8 +13,6 @@
 
 list of technologies used to build the project
 
-Ex:
-
 - Html
 
 - Css
