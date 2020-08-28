@@ -30,8 +30,6 @@ list of technologies used to build the project
 
 ## ⚙ Installation
 
-Ex:
-
 1.  Clone the repositorie
 
 ```
