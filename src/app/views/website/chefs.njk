@@ -22,8 +22,13 @@
                     </div>
                     <div class="card-infos">
                         <h3 id="id">{{chef.name}}</h3>
-                        <p>{{chef.total_recipes}}
-                            receitas</p>
+                        {% if chef.total_recipes == 1 %}
+                            <p>{{chef.total_recipes}}
+                            receita</p>
+                        {% else %}
+                            <p>{{chef.total_recipes}}
+                                receitas</p>
+                        {% endif %}
                     </div>
                 </div>
             {% endfor %}

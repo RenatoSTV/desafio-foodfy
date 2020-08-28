@@ -1,41 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <base href="/">
         <link rel="stylesheet" href="styles/admin.css">
+        <link rel="stylesheet" href="styles/session.css">
         <link rel="stylesheet" href="styles/messages.css">
+
         <link rel="icon" type="image/png" sizes="16x16" href="assets\favicon-32x32.png">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         {% block head %}
             <title>Foodfy</title>
         {% endblock head %}
-
     </head>
     <body>
         {% include "parts/messages.njk" %}
-
         <header>
-            <div class="header">
+            <div class="header session">
                 <div class="header-content">
                     <div class="logo">
-                        <a href="/"><img src="assets\logo2.png" alt="LOGO Foodfy"></a>
+                        <a href="/"><img src="assets\logo.png" alt="LOGO Foodfy"></a>
                     </div>
-                    <div class="header-infos">
-                        <a href="/admin/recipes">RECEITAS</a>
-                        <a href="/admin/chefs">CHEFS</a>
-                        <a href="/admin/users">USUÁRIOS</a>
-                    </div>
-                </div>
-                <div class="exit">
-                    <form action="/admin/logout" method="POST">
-                        <button id="exit">SAIR</button>
-                    </form>
                 </div>
             </div>
         </header>
+
         {% block content %}{% endblock content %}
         <script src="scripts/admin_scripts.js"></script>
     </body>

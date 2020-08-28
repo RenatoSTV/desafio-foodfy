@@ -1,0 +1,30 @@
+{% extends 'admin/admin_layout.njk' %}
+
+{% block head %}
+    <title>Novo usuário</title>
+{% endblock head %}
+
+{% block content %}
+    <section class="user-profile form">
+        <form action="/admin/users/register">
+            <div class="head">
+                <h2>Bem vindo {{user.name}}</h2>
+                <div class="buttons">
+                    <a class="button" id="save" href="/admin/users/register">Salvar</a>
+                </div>
+            </div>
+
+            <div class="fields">
+                {% include 'admin/users/fields.njk' %}
+
+                <div class="item">
+                    <label>Senha</label>
+                    <div class="input">
+                        <input type="password" name="password" placeholder="Digite a senha">
+                    </div>
+                </div>
+            </div>
+        </form>
+    </section>
+
+{% endblock content %}

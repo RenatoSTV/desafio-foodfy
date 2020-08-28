@@ -166,10 +166,11 @@ module.exports = {
         }
 
         await Recipe.put(req.body)
+        
 
         return res.redirect(`/admin/recipes/`)
     },
-
+    
     //delete
     async delete(req, res) {
         await Recipe.delete(req.body.id)

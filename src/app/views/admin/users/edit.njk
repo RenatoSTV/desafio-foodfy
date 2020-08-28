@@ -1,0 +1,33 @@
+{% extends 'admin/admin_layout.njk' %}
+
+{% block head %}
+    <title>Novo usuário</title>
+{% endblock head %}
+
+{% block content %}
+    <section class="user-edit form">
+        <div class="head">
+            <h2>Atualizar Usuário</h2>
+            <form action="/admin/users?_method=DELETE" method="post" id="delete">
+                <input type="hidden" name="id" value="{{user.id}}">
+            </form>
+            <div class="buttons">
+                <button class="button" form="delete" id="delete" href="/admin/users">Deletar</button>
+                <button class="button" form="update" id="save" href="/admin/users/register">Salvar</button>
+            </div>
+        </div>
+        <form action="/admin/users?_method=PUT" method="post" id="update">
+
+            <div class="fields">
+                {% include 'admin/users/fields.njk' %}
+
+                <div class="is_admin">
+                    <input type="checkbox" name="admin" id="admin" {% if user.is_admin == true %} checked="checked" {% endif %}>
+                    <label for="admin">Administrador</label>
+                </div>
+
+            </div>
+        </form>
+    </section>
+
+{% endblock content %}

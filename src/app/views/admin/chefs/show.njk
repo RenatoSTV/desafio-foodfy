@@ -21,8 +21,13 @@
             <img src="{{files[0].src}}" alt="{{files[0].name}}">
 
             <h2>{{chef.name}}</h2>
-            <p>{{totalRecipes}}
-                receitas</p>
+            {% if totalRecipes == 1 %}
+                <p>{{totalRecipes}}
+                    receita</p>
+            {% else %}
+                <p>{{totalRecipes}}
+                    receitas</p>
+            {% endif %}
 
         </div>
         {% if totalRecipes == 0 %}

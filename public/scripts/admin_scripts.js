@@ -1,6 +1,7 @@
 currentPage = location.pathname
 menuItems = document.querySelectorAll(".header-infos a")
 
+
 for (item of menuItems) {
     if (currentPage.includes(item.getAttribute("href"))) {
         item.classList.add("active")
@@ -189,5 +190,41 @@ Lightbox = {
         Lightbox.target.style.top = "-100%"
         Lightbox.target.style.bottom = "inicial"
         Lightbox.closeButton.style.top = "-80px"
+    }
+}
+
+Validate = {
+    apply(input, func) {
+        Validate.clearErrors(input)
+        let results = Validate[func](input.value)
+        input.value = results.value
+
+        if(results.error)
+            Validate.displayError(input, results.error)
+
+    },
+    displayError(input, error) {
+        const div = document.createElement('div')
+        div.classList.add('error')
+        div.innerHTML = error
+        input.parentNode.appendChild(div)
+        input.focus()
+    },
+    clearErrors(input){
+        const errorDiv = input.parentNode.querySelector('.error')
+        if(errorDiv)
+            errorDiv.remove()
+    },
+    isEmail(value) {
+        let error = null
+        const mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
+
+        if(!value.match(mailformat))
+            error = "Email inválido"
+
+        return{
+            error,
+            value
+        }
     }
 }
