@@ -58,7 +58,7 @@ npm start
 
 ## 📩 Contact
 
-Your Name - Renato Teofilo
+Renato Teofilo
 
 Email - **renatostv@gmail.com**
 
@@ -78,7 +78,7 @@ Project Link - [Foodfy](https://github.com/RenatoSTV/desafio-foodfy)
 
 ## ✍ License
 
-Distributed under the {project license} License. See [LICENSE](https://github.com/RenatoSTV/desafio-foodfy/blob/master/LICENSE) for more information.
+Distributed under the MIT License. See [LICENSE](https://github.com/RenatoSTV/desafio-foodfy/blob/master/LICENSE) for more information.
 
 ## Issues
 
