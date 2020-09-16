@@ -1,8 +1,4 @@
 const db = require('../../config/db')
-const crypto = require("crypto")
-const { hash } = require('bcryptjs')
-const fs = require('fs')
-
 
 module.exports = {
     async findOne(filters) {
@@ -26,7 +22,7 @@ module.exports = {
     async all() {
         return db.query("SELECT * FROM users")
     },
-    async create(data) {
+    async create(fields) {
         try {
             const query = `
             INSERT INTO users (
@@ -38,10 +34,14 @@ module.exports = {
             RETURNING id
         `
 
-            const password = crypto.randomBytes(3).toString("hex")
-            console.log(password)
 
-            let { is_admin } = data
+
+            let { 
+                name,
+                email,
+                is_admin,
+                password 
+            } = fields
 
             if (is_admin === undefined) {
                 is_admin = "false"
@@ -50,8 +50,8 @@ module.exports = {
             }
 
             const values = [
-                data.name,
-                data.email,
+                name,
+                email,
                 is_admin,
                 password
             ]

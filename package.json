@@ -4,6 +4,7 @@
   "description": "<h1 align=\"center\"><img width=\"25px\" height=\"25px\" src=\"https://image.flaticon.com/icons/svg/481/481486.svg\"> Foody</h1>",
   "main": "server.js",
   "scripts": {
+    "run": "node src/server.js",
     "start": "npm-run-all -p nodemon browsersync",
     "nodemon": "nodemon src/server.js",
     "browsersync": "browser-sync start --proxy http://localhost:5000 --files public,src/app/views"

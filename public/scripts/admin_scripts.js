@@ -206,7 +206,7 @@ Validate = {
     displayError(input, error) {
         const div = document.createElement('div')
         div.classList.add('error')
-        div.innerHTML = error
+        div.innerHTML = error 
         input.parentNode.appendChild(div)
         input.focus()
     },

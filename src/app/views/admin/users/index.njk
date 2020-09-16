@@ -6,17 +6,19 @@
 
 {% block content %}
     <section class="user-profile form">
-        <form action="/admin/users/register">
+        <form action="/admin/profile?_method=PUT" method="POST">
             <div class="head">
-                <h2>Bem vindo {{user.name}}</h2>
+                <h2>Bem vindo
+                    {{user.name}}</h2>
                 <div class="buttons">
-                    <a class="button" id="save" href="/admin/users/register">Salvar</a>
+                    <button class="button" type="submit" id="save">Salvar</button>
                 </div>
             </div>
 
             <div class="fields">
                 {% include 'admin/users/fields.njk' %}
 
+                <input type="hidden" name="id" value="{{user.id}}">
                 <div class="item">
                     <label>Senha</label>
                     <div class="input">

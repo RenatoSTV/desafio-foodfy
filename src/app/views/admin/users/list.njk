@@ -8,7 +8,9 @@
 
     <div class="head">
         <h2>Usuários</h2>
-        <a class="button" href="/admin/users/register">Novo</a>
+        {% if session.isAdmin %}
+            <a class="button" href="/admin/users/register">Novo</a>
+        {% endif %}
     </div>
     <section class="cards users">
         {% for user in users %}
@@ -21,8 +23,8 @@
                         <a href="/admin/users/{{user.id}}/edit" class="edit" type="submit">Editar</a>
 
                         <form action="/admin/users?_method=DELETE" method="post" id="delete">
+                            <button class="delete" type="submit">Remover</button>
                             <input type="hidden" name="id" value="{{user.id}}">
-                            <button form="delete" class="delete" type="submit">Remover</button>
                         </form>
                     </div>
                 </div>

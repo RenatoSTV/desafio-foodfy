@@ -1,6 +1,6 @@
 @keyframes hidemessage {
     to {
-        top:-50px;
+        top:-135px;
         opacity: 0;
     }
 }
@@ -20,11 +20,6 @@
 
     animation: hidemessage 400ms 5s ease-out forwards;
 }
-
-/* .input.error{
-    border: 1px solid red;
-    border-radius: 4px;
-} */
 
 .messages.error {
     background-color: #e74c3c;

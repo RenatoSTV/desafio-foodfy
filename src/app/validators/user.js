@@ -67,27 +67,33 @@ async function post(req, res, next) {
 
 async function update(req, res, next) {
 
-    // has password
-    const { id, password } = req.body
+    try {
+        // has password
+        const { id, password } = req.body
 
-    if (!password) return res.render("user/index", {
-        user: req.body,
-        error: "Coloque sua senha para atualizar seu cadastro."
-    })
+        if (!password) return res.render("admin/users/index", {
+            user: req.body,
+            error: "Coloque sua senha para atualizar seu cadastro."
+        })
 
-    // password match
-    const user = await User.findOne({ where: { id } })
+        // password match
+        const user = await User.findOne({ where: { id } })
 
-    const passed = await compare(password, user.password)
+        // const passed = await compare(password, user.password)
+        const passed = password === user.password
 
-    if (!passed) return res.render("user/index", {
-        user: req.body,
-        error: "Senha incorreta."
-    })
+        if (!passed) return res.render("admin/users/index", {
+            user: req.body,
+            error: "Senha incorreta."
+        })
 
-    req.user = user
+        req.user = user
 
-    next()
+        next()
+    } catch (error) {
+        console.log(error)
+    }
+
 }
 
 module.exports = {

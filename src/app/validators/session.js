@@ -2,6 +2,7 @@ const User = require('../models/User')
 const { compare } = require('bcryptjs')
 
 async function login(req, res, next) {
+
     // veriicar se o usuário está cadastrado
     const { email, password } = req.body
 
@@ -13,9 +14,8 @@ async function login(req, res, next) {
     })
 
     // verificar se o password bate
-    // const passed = await compare(password, user.password)
-    const passed = password === user.password
-    console.log(passed)
+    const passed = await compare(password, user.password)
+    // const passed = password === user.password
     if (passed == false) return res.render("admin/session/login", {
         user: req.body,
         error: "Senha incorreta."

@@ -2,21 +2,21 @@ const express = require('express')
 const routes = express.Router()
 
 // middlewares
-const multer = require('./app/middlewares/multer')
-const { isLoggedRedirectToAdmin, onlyUsers, isAdmin } = require('./app/middlewares/session')
+const multer = require('../app/middlewares/multer')
+const { isLoggedRedirectToProfile, onlyUsers, isAdmin } = require('../app/middlewares/session')
 
 // controllers
-const admin = require('./app/controllers/AdminController')
-const recipes = require('./app/controllers/RecipesController')
-const chefs = require('./app/controllers/ChefsController')
-const website = require('./app/controllers/WebsiteController')
-const user = require('./app/controllers/UserController')
-const profile = require('./app/controllers/ProfileController')
-const session = require('./app/controllers/SessionController')
+const admin = require('../app/controllers/AdminController')
+const recipes = require('../app/controllers/RecipesController')
+const chefs = require('../app/controllers/ChefsController')
+const website = require('../app/controllers/WebsiteController')
+const user = require('../app/controllers/UserController')
+const profile = require('../app/controllers/ProfileController')
+const session = require('../app/controllers/SessionController')
 
 //validators
-const SessionValidator = require('./app/validators/session')
-const UserValidator = require('./app/validators/user')
+const SessionValidator = require('../app/validators/session')
+const UserValidator = require('../app/validators/user')
 
 
 //WEBSITE
@@ -28,7 +28,7 @@ routes.get("/:id", website.recipe)
 routes.get("/recipes/?",website.search)
 
 // ADMIN
-routes.get("/admin/index", admin.index); // Mostrar a lista de receitas -== RECEBE recipes.njk ==-
+routes.get("/admin/index",onlyUsers, admin.index); 
 
 //RECIPES
 routes.get("/admin/recipes", recipes.index);
@@ -43,16 +43,16 @@ routes.delete("/admin/recipes", recipes.delete); // Deletar uma receita -== RECE
 //CHEFS
 
 routes.get("/admin/chefs", chefs.index);
-routes.get("/admin/chefs/create", chefs.create); // Mostrar formulário de novo chef -== RECEBE create.njk ==-
+routes.get("/admin/chefs/create",isAdmin, chefs.create); // Mostrar formulário de novo chef -== RECEBE create.njk ==-
 routes.get("/admin/chefs/:id", chefs.show); // Exibir detalhes de um chef -== RECEBE show.njk ==-
-routes.get("/admin/chefs/:id/edit", chefs.edit); // Mostrar formulário de edição do chef -== RECEBE edit.njk ==-
+routes.get("/admin/chefs/:id/edit",isAdmin, chefs.edit); // Mostrar formulário de edição do chef -== RECEBE edit.njk ==-
 
 routes.post("/admin/chefs", multer.array("photos", 1), chefs.post); // Cadastrar novo chef -== RECEBE create.njk ==-
 routes.put("/admin/chefs", multer.array("photos", 1), chefs.put); // Editar um chef -== RECEBE edit.njk ==-
-routes.delete("/admin/chefs", chefs.delete); // Deletar um chef -== RECEBE edit.njk ==-
+routes.delete("/admin/chefs",isAdmin, chefs.delete); // Deletar um chef -== RECEBE edit.njk ==-
 
 // login/logout
-routes.get('/admin/login',isLoggedRedirectToAdmin, session.loginForm)
+routes.get('/admin/login',isLoggedRedirectToProfile, session.loginForm)
 routes.post('/admin/login', SessionValidator.login, session.login)
 routes.post('/admin/logout',session.logout)
 
@@ -64,7 +64,7 @@ routes.get('/admin/reset-password', session.resetForm)
 
 // Rotas de perfil de um usuário logado
 routes.get('/admin/profile', UserValidator.show, profile.index) // Mostrar o formulário com dados do usuário logado
-// routes.put('/admin/profile', profile.put)// Editar o usuário logado
+routes.put('/admin/profile',UserValidator.update, profile.put)// Editar o usuário logado
 
 // Rotas que o administrador irá acessar para gerenciar usuários
 routes.get('/admin/users', user.list) //Mostrar a lista de usuários cadastrados
