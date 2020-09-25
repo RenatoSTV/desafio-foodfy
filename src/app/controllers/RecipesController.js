@@ -86,6 +86,8 @@ module.exports = {
     async post(req, res) {
         const keys = Object.keys(req.body)
 
+        const userId = req.session.userId
+
         for (key of keys) {
             if (req.body[key] == "") {
                 return res.send("Please, fill all fields")
@@ -96,7 +98,7 @@ module.exports = {
             return res.send('Please, send at least one image.')
 
 
-        let results = await Recipe.create(req.body)
+        let results = await Recipe.create(req.body, userId)
         const RecipeId = results.rows[0].id
 
         const filesPromise = req.files.map(file => File.createRecipeFiles({ ...file, recipe_id: RecipeId }))

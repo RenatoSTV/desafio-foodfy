@@ -11,7 +11,7 @@ module.exports = {
         ORDER BY recipes.created_at DESC`)
 
     },
-    create(data){
+    create(data, userId){
 
         const query = `
             INSERT INTO recipes (
@@ -20,7 +20,7 @@ module.exports = {
                 ingredients,
                 preparation,
                 information,
-                created_at
+                user_id
             ) VALUES ( $1, $2, $3, $4, $5, $6)
             RETURNING id
         `
@@ -31,7 +31,7 @@ module.exports = {
             data.ingredients,
             data.preparation,
             data.information,
-            date(Date.now()).iso
+            userId
         ]
 
         return db.query(query, values)

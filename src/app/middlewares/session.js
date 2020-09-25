@@ -15,6 +15,7 @@ function isLoggedRedirectToProfile(req, res, next) {
 }
 
 async function isAdmin(req, res, next) {
+    req.session.error = ""
 
     if (!req.session.isAdmin) {
         req.session.error = "Apenas Administradores"

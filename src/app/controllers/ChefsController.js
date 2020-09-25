@@ -11,6 +11,9 @@ module.exports = {
         // return res.render("admin/chefs/index", { chefs })
 
         try {
+            const error = req.session.error
+            req.session.error = ""
+
             let results = await Chef.all()
             const chefs = results.rows
 
@@ -32,7 +35,7 @@ module.exports = {
 
             const allChefs = await Promise.all(chefsPromise)
 
-            return res.render("admin/chefs/index", { chefs: allChefs })
+            return res.render("admin/chefs/index", { chefs: allChefs, error })
         } catch (error) {
             console.log(error)
         }
@@ -41,6 +44,10 @@ module.exports = {
 
     //show
     async show(req, res) {
+        
+        const error = req.session.error
+        req.session.error = ""
+
         let chefId = req.params.id
         let results = await Chef.chefShow(chefId)
         const chef = results.rows[0]
@@ -76,16 +83,16 @@ module.exports = {
             let results = await Chef.find(req.params.id)
             const chef = results.rows[0]
             const chefId = req.params.id
-            
+
 
             if (!chef) return res.send("Chef not found!")
 
-            return res.render("admin/chefs/show", { chef, totalRecipes, chefId, files })
+            return res.render("admin/chefs/show", { chef, totalRecipes, chefId, files, error })
 
         } else {
             if (!chef) return res.send("Chef not found!")
 
-            return res.render("admin/chefs/show", { chef, recipes: allRecipes, chefId, totalRecipes, files })
+            return res.render("admin/chefs/show", { chef, recipes: allRecipes, chefId, totalRecipes, files, error })
         }
 
     },
@@ -123,6 +130,7 @@ module.exports = {
 
     //edit
     async edit(req, res) {
+
         const chefId = req.params.id
         let results = await Chef.chefShow(chefId)
         const chef = results.rows[0]
@@ -145,7 +153,7 @@ module.exports = {
 
             if (!chef) return res.send("Chef not found!")
 
-            return res.render("admin/chefs/edit", { chef, totalRecipes, chefId, files })
+            return res.render("admin/chefs/edit", { chef, totalRecipes, chefId, files})
 
         } else {
             if (!chef) return res.send("Chef not found!")
@@ -192,13 +200,13 @@ module.exports = {
             await Promise.all(newFilesPromise)
             const resultsFile = await newFilesPromise[0]
             const fileId = resultsFile.rows[0].id
-    
+
             await Chef.put(req.body, fileId)
         }
 
 
         return res.redirect(`/admin/chefs/${req.body.id}`)
-        
+
     },
 
     //delete
