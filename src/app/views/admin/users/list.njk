@@ -23,7 +23,7 @@
                         <a href="/admin/users/{{user.id}}/edit" class="edit" type="submit">Editar</a>
 
                         <form action="/admin/users?_method=DELETE" method="post" id="delete">
-                            <button class="delete" type="submit">Remover</button>
+                            <button class="delete" onclick="ButtonPreventDefault(event,'{{user.id}}')" type="submit">Remover</button>
                             <input type="hidden" name="id" value="{{user.id}}">
                         </form>
                     </div>
@@ -31,5 +31,7 @@
             </div>
         {% endfor %}
 
+    <input type="hidden" id="loggedId" value="{{loggedId}}">
+    {% include 'admin/users/confirm.njk' %}
     </section>
 {% endblock content %}

@@ -9,10 +9,11 @@ module.exports = {
         try {
             const error = req.session.error
             req.session.error = ""
+            const loggedId = req.session.userId
 
             let results = await User.all()
             let users = results.rows
-            return res.render('admin/users/list', {users,error})
+            return res.render('admin/users/list', {users,error, loggedId})
         } catch (error) {
             console.error(error)
         }
@@ -117,5 +118,7 @@ module.exports = {
                 error: "Erro ao tentar deletar conta!"
             })
         }
+
+        //return res.redirect('/admin/users')
     },
 }

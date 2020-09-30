@@ -199,32 +199,48 @@ Validate = {
         let results = Validate[func](input.value)
         input.value = results.value
 
-        if(results.error)
+        if (results.error)
             Validate.displayError(input, results.error)
 
     },
     displayError(input, error) {
         const div = document.createElement('div')
         div.classList.add('error')
-        div.innerHTML = error 
+        div.innerHTML = error
         input.parentNode.appendChild(div)
         input.focus()
     },
-    clearErrors(input){
+    clearErrors(input) {
         const errorDiv = input.parentNode.querySelector('.error')
-        if(errorDiv)
+        if (errorDiv)
             errorDiv.remove()
     },
     isEmail(value) {
         let error = null
         const mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
 
-        if(!value.match(mailformat))
+        if (!value.match(mailformat))
             error = "Email inválido"
 
-        return{
+        return {
             error,
             value
         }
     }
 }
+
+// function ButtonPreventDefault(e, userId) {
+
+//     const loggedId = document.querySelector("#loggedId").value
+//     console.log(loggedId, userId)
+//     if (loggedId == userId) {
+//         alert('Você não pode excluir seu próprio perfil!')
+//         e.preventDefault()
+//         return
+//     }
+
+//     const confirmation = confirm("Você realmente deseja realizar essa exclusão?")
+//     if (!confirmation) {
+//         e.preventDefault()
+//     }
+// }

@@ -963,6 +963,7 @@ form .item #photos-upload-chef #photos-input {
   display: flex;
   align-items: center;
   justify-content: center;
+  justify-self: flex-start;
   margin-top: 16px;
 }
 

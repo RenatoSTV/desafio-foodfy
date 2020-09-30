@@ -1,0 +1,19 @@
+<script>
+
+function ButtonPreventDefault(e, userId) {
+
+    const loggedId = document.querySelector("#loggedId").value
+    console.log(loggedId, userId)
+    if (loggedId == userId) {
+        alert('Você não pode excluir seu próprio perfil!')
+        e.preventDefault()
+        return
+    }
+
+    const confirmation = confirm("Você realmente deseja realizar essa exclusão?")
+    if (!confirmation) {
+        e.preventDefault()
+    }
+}
+
+</script>
