@@ -5,14 +5,7 @@
             <i class="material-icons">
                 add
             </i>
-            <input 
-                id="photos-input" 
-                type="file" 
-                name="photos" 
-                multiple="multiple" 
-                accept="image/*" 
-                onchange="PhotosUpload.handleFileInput(event)"
-            >
+            <input id="photos-input" type="file" name="photos" multiple="multiple" accept="image/*" onchange="PhotosUpload.handleFileInput(event)">
         </div>
         <div id="photos-preview">
             {% if files %}
@@ -52,25 +45,29 @@
         <div class="content">
             {% for ingredient in recipe.ingredients %}
                 <input class="ingredient" type="text" name="ingredients[]" value="{{ingredient}}" placeholder=" Ex: 1 xicara de açúcar"/>
-                <span class="delete">Excluir</span>
+                <span class="deleteIngredient" onclick="delIngredient()">Excluir</span>
             {% endfor %}
         </div>
     </div>
 </div>
-<button type="button" class="add-ingredient">Adicionar novo ingrediente</button>
+<button type="button" class="add-ingredient" onclick="addIngredient()">Adicionar novo ingrediente</button>
 
 <div id="preparo" class="item">
-    <div class="preparo">
+    <div class="steps">
         <label for="">Modo de preparo</label>
-        {% for step in recipe.preparation %}
-            <input class="step" type="text" name="preparation[]" value="{{step}}" placeholder=" Coloque um passo de cada vez..."/>
-        {% endfor %}
+        <div class="content">
+            {% for step in recipe.preparation %}
+                <input class="step" type="text" name="preparation[]" value="{{step}}" placeholder=" Coloque um passo de cada vez..."/>
+                <span class="deleteStep" onclick="delStep()">Excluir</span>
+
+            {% endfor %}
+        </div>
     </div>
 </div>
-<button type="button" class="add-step">Adicionar novo passo</button>
+<button type="button" class="add-step" onclick="addStep()">Adicionar novo passo</button>
 
 <div class="item">
-    <label for="">Informações adicionais</label>
+    <label for="info">Informações adicionais</label>
 
     <input type="text" name="information" id="info" value="{{recipe.information}}" placeholder=" Digite alguma informação adicional">
 </div>

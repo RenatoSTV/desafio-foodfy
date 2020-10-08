@@ -34,7 +34,7 @@ routes.get("/admin/index",onlyUsers, admin.index);
 routes.get("/admin/recipes", recipes.index);
 routes.get("/admin/recipes/create", recipes.create); // Mostrar formulário de nova receita -== RECEBE create.njk ==-
 routes.get("/admin/recipes/:id", recipes.show); // Exibir detalhes de uma receita  -== RECEBE recipe.njk ==-
-routes.get("/admin/recipes/:id/edit", recipes.edit); // Mostrar formulário de edição de receita -== RECEBE edit.njk ==-
+routes.get("/admin/recipes/:id/edit", UserValidator.validate, recipes.edit); // Mostrar formulário de edição de receita -== RECEBE edit.njk ==-
 
 routes.post("/admin/recipes", multer.array("photos", 5), recipes.post); // Cadastrar nova receita -== RECEBE create.njk ==-
 routes.put("/admin/recipes", multer.array("photos", 5), recipes.put); // Editar uma receita -== RECEBE edit.njk ==-

@@ -17,8 +17,9 @@ body {
   height: 100vh;
 }
 
-button:focus {
-  border: none;
+button:focus,
+select:focus {
+  outline: none;
 }
 .header {
   width: 100%;
@@ -274,6 +275,7 @@ button:focus {
   background: url("https://img.icons8.com/ios/20/000000/chevron-down.png")
     no-repeat center right 20px;
   background-color: #ffffff;
+  cursor: pointer;
 }
 
 .details .item .ingredients,
@@ -315,7 +317,8 @@ button:focus {
   color: #6558c3;
   margin-top: 15px;
   text-align: left;
-  background-color: whitesmoke;
+  background-color:white;
+  cursor: pointer;
 }
 
 /* -== Mostrar Receita / Mostrar Chef==- */
@@ -608,7 +611,7 @@ span {
   padding: 0;
   margin-top: 15px;
   text-align: left;
-  background-color: whitesmoke;
+  background-color: white;
   cursor: pointer;
 }
 
@@ -986,7 +989,6 @@ form .item #photos-upload-chef #photos-input {
   font-weight: bold;
   color: #ffffff;
   text-decoration: none;
-  padding: 9px 50px;
   background-color: #6558c3;
   border-radius: 4px;
   cursor: pointer;

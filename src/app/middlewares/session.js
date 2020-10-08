@@ -30,5 +30,5 @@ async function isAdmin(req, res, next) {
 module.exports = {
     onlyUsers,
     isLoggedRedirectToProfile,
-    isAdmin
+    isAdmin,
 }
