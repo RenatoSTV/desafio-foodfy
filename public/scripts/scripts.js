@@ -1,14 +1,3 @@
-// const recipeCards = document.querySelectorAll('.card')
-
-// for (recipeCard of recipeCards) {
-//     recipeCard.addEventListener('click', function () {
-//         let recipeId = recipeCard.getAttribute('id')
-//         console.log(recipeId)
-
-//         window.location.href = `/${recipeId}`
-//     });
-// }
-
 const currentPage = location.pathname
 const menuItems = document.querySelectorAll("header .header-infos a")
 

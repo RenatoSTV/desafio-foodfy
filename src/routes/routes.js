@@ -58,9 +58,9 @@ routes.post('/admin/logout',session.logout)
 
 // reset password / forgot
 routes.get('/admin/forgot-password', session.forgotForm)
-routes.get('/admin/reset-password', session.resetForm)
-// routes.post('/forgot-password', SessionValidator.forgot, session.forgot)
-// routes.post('/password-reset', SessionValidator.reset, session.reset)
+routes.post('/admin/forgot-password', SessionValidator.forgot, session.forgot)
+routes.get('/admin/password-reset', session.resetForm)
+routes.post('/admin/password-reset', SessionValidator.reset, session.reset)
 
 // Rotas de perfil de um usuário logado
 routes.get('/admin/profile', UserValidator.show, profile.index) // Mostrar o formulário com dados do usuário logado
@@ -72,7 +72,7 @@ routes.get('/admin/users/register', isAdmin, user.registerForm) //Mostrar formul
 routes.post('/admin/users/register', UserValidator.post, user.post) //Cadastrar um usuário
 routes.get('/admin/users/:id/edit', isAdmin, UserValidator.edit, user.edit) // Editar um usuário
 routes.put('/admin/users', user.update) // Editar um usuário
-routes.delete('/admin/users',isAdmin, user.delete) // Deletar um usuário
+routes.delete('/admin/users/:id',isAdmin, user.delete) // Deletar um usuário
 
 
 module.exports = routes

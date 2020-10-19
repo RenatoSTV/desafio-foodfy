@@ -11,6 +11,7 @@ module.exports = {
         ORDER BY recipes.created_at DESC`)
 
     },
+
     create(data, userId){
 
         const query = `
@@ -37,20 +38,22 @@ module.exports = {
         return db.query(query, values)
 
     },
+
     find(id){
         return db.query(`SELECT recipes.*, chefs.name AS chef_name 
         FROM recipes 
         LEFT JOIN chefs ON (recipes.chef_id = chefs.id)
         WHERE recipes.id = $1`, [id])
     },
-    findBy(filter){
+
+    findBy(userId){
         return db.query(`
             SELECT recipes.*,chefs.name AS chef_name 
             FROM recipes
-            LEFT JOIN chefs ON (chef.id = recipes.chef_id)
-            WHERE recipes.title ILIKE '%${filter}%'
-            GROUP BY recipes.name, chef.id
-            ORDER BY recipes.updated_at`)
+            LEFT JOIN chefs ON (chefs.id = recipes.chef_id)
+            WHERE recipes.user_id = $1
+            GROUP BY recipes.id, chefs.id
+            ORDER BY recipes.updated_at`, [userId])
     },
     
     put(data){
@@ -75,9 +78,11 @@ module.exports = {
 
         return db.query(query, values)
     },
+
     delete(id){
         db.query(`DELETE FROM recipes WHERE id = $1`, [id])
     },
+
     chefsSelectOptions(callback){
         db.query(`SELECT name, id FROM chefs`, function(err, results){
             if(err) throw `DATABASE error! ${err}`
@@ -85,6 +90,7 @@ module.exports = {
             callback(results.rows)
         })
     },
+
     paginate(params) {
         const { filter, limit, offset } = params
 
@@ -119,6 +125,7 @@ module.exports = {
 
         return db.query(query, [limit, offset])
     },
+
     files(id) {
         return db.query(`
         SELECT files.* FROM files LEFT JOIN recipe_files ON (files.id = recipe_files.file_id) LEFT

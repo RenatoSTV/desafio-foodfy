@@ -1,4 +1,6 @@
 const db = require('../../config/db')
+const Recipe = require('../models/Recipe')
+const fs = require('fs')
 
 module.exports = {
     async findOne(filters) {
@@ -89,28 +91,28 @@ module.exports = {
     async delete(id) {
 
         // pegar todos os produtos
-        // let results = await db.query("SELECT * FROM products WHERE user_id = $1", [id])
-        // const products = results.rows
+        let results = await db.query("SELECT * FROM recipes WHERE user_id = $1", [id])
+        const recipes = results.rows
 
-        //dos produtos, pegar todas as imagens
-        // const allFilesPromise = products.map(product =>
-        //     Product.files(product.id))
+        //das receitas, pegar todas as imagens
+        const allFilesPromise = recipes.map(recipe =>
+            Recipe.files(recipe.id))
 
-        // let promiseResults = await Promise.all(allFilesPromise)
+        let promiseResults = await Promise.all(allFilesPromise)
 
         // rodar a remoção do usuário
         await db.query('DELETE FROM users WHERE id = $1', [id])
 
         // remover as imagens da pasta public
-        // promiseResults.map(results => {
-        //     results.rows.map(file => {
-        //         try {
-        //             fs.unlinkSync(file.path)
-        //         } catch (error) {
-        //             console.error(error)
-        //         }
-        //     })
-        // })
+        promiseResults.map(results => {
+            results.rows.map(file => {
+                try {
+                    fs.unlinkSync(file.path)
+                } catch (error) {
+                    console.error(error)
+                }
+            })
+        })
     }
 
 }

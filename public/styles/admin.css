@@ -17,10 +17,6 @@ body {
   height: 100vh;
 }
 
-button:focus,
-select:focus {
-  outline: none;
-}
 .header {
   width: 100%;
   height: 80px;
@@ -984,7 +980,7 @@ form .item #photos-upload-chef #photos-input {
   cursor: pointer;
 }
 
-.button {
+button.button {
   font-size: 16px;
   font-weight: bold;
   color: #ffffff;
@@ -992,6 +988,7 @@ form .item #photos-upload-chef #photos-input {
   background-color: #6558c3;
   border-radius: 4px;
   cursor: pointer;
+  padding: 9px 50px;
 }
 
 form #delete{
