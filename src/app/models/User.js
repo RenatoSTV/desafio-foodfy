@@ -35,9 +35,6 @@ module.exports = {
             ) VALUES ($1, $2, $3, $4)
             RETURNING id
         `
-
-
-
             let { 
                 name,
                 email,
@@ -71,15 +68,14 @@ module.exports = {
 
         Object.keys(fields).map((key, index, array) => {
             if ((index + 1) < array.length) {
-                console.log(key, fields)
                 query = `${query}
-                    ${key} = '${fields[key]}',
+                ${key} = '${fields[key]}',
                 `
             } else {
                 // last iteration
                 query = `${query}
-                    ${key} = '${fields[key]}'
-                    WHERE id = ${id}
+                ${key} = '${fields[key]}'
+                WHERE id = ${id}
                 `
             }
         })

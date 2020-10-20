@@ -67,7 +67,7 @@ routes.get('/admin/profile', UserValidator.show, profile.index) // Mostrar o for
 routes.put('/admin/profile',UserValidator.update, profile.put)// Editar o usuário logado
 
 // Rotas que o administrador irá acessar para gerenciar usuários
-routes.get('/admin/users', user.list) //Mostrar a lista de usuários cadastrados
+routes.get('/admin/users',isAdmin, user.list) //Mostrar a lista de usuários cadastrados
 routes.get('/admin/users/register', isAdmin, user.registerForm) //Mostrar formulário de novo usuários 
 routes.post('/admin/users/register', UserValidator.post, user.post) //Cadastrar um usuário
 routes.get('/admin/users/:id/edit', isAdmin, UserValidator.edit, user.edit) // Editar um usuário

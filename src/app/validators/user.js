@@ -63,7 +63,7 @@ async function validate(req, res, next) {
 }
 
 async function post(req, res, next) {
-  //check if user exists [email,cpf_cnpj]
+  //check if user exists [email]
   let { email, is_admin } = req.body;
 
   if (is_admin === undefined) {
@@ -72,13 +72,12 @@ async function post(req, res, next) {
     is_admin = "true";
   }
 
-  console.log(is_admin);
   const user = await User.findOne({
     where: { email },
   });
 
   if (user)
-    return res.render("user/register", {
+    return res.render("admin/users/register", {
       user: req.body,
       error: "Usuário já cadastrado.",
     });
@@ -101,7 +100,7 @@ async function update(req, res, next) {
     const user = await User.findOne({ where: { id } });
 
     // const passed = await compare(password, user.password)
-    const passed = password === user.password;
+    const passed = await compare(password, user.password)
 
     if (!passed)
       return res.render("admin/users/index", {

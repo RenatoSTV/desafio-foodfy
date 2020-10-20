@@ -22,6 +22,7 @@ module.exports = {
     return res.render("admin/users/register");
   },
   edit(req, res) {
+    const error = ""
     const { user } = req;
     return res.render("admin/users/edit", { user, error });
   },

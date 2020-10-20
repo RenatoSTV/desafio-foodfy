@@ -57,6 +57,20 @@ body {
   font-weight: bold;
 }
 
+.header .exit {
+  display:flex;
+  align-items: center;
+  justify-content:center;
+}
+
+.header .exit .perfil{ 
+  display: flex;
+  align-items: center;
+  justify-content:center;
+  margin-right: 20px;
+  text-decoration: none;
+}
+
 .header .exit #exit {
   text-decoration: none;
   font-size: 16px;
@@ -991,6 +1005,6 @@ button.button {
   padding: 9px 50px;
 }
 
-form #delete{
+.button#delete{
   background-color: #DC4747;
 }

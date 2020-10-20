@@ -8,13 +8,13 @@
     <section class="user-edit form">
         <div class="head">
             <h2>Atualizar Usuário</h2>
-            <form action="/admin/users?_method=DELETE" method="post" id="delete">
+            <form action="/admin/users/{{user.id}}?_method=DELETE" method="post" id="delete">
                 <input type="hidden" name="id" value="{{user.id}}">
+                <div class="buttons">
+                    <button class="button" form="delete" id="delete" onclick="ButtonPreventDefault(event,'{{user.id}}')" type="submit">Deletar</button>
+                    <button class="button" form="update" id="save" href="/admin/users/register">Salvar</button>
+                </div>
             </form>
-            <div class="buttons">
-                <button class="button" form="delete" id="delete" href="/admin/users">Deletar</button>
-                <button class="button" form="update" id="save" href="/admin/users/register">Salvar</button>
-            </div>
         </div>
         <form action="/admin/users?_method=PUT" method="post" id="update">
 
@@ -27,6 +27,8 @@
                 </div>
 
             </div>
+            <input type="hidden" name="id" value="{{user.id}}">
+
         </form>
     </section>
 
