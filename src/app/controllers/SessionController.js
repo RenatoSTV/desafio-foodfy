@@ -9,6 +9,7 @@ module.exports = {
     },
     login(req, res) {
         // colocar o usuário no req.session
+        console.log(req.user.id)
         req.session.userId = req.user.id
         req.session.isAdmin = req.user.is_admin
 

@@ -8,8 +8,8 @@
             <input id="photos-input" type="file" name="photos" multiple="multiple" accept="image/*" onchange="PhotosUpload.handleFileInput(event)">
         </div>
         <div id="photos-preview">
-            {% if files %}
-                {% for image in files %}
+            {% if recipe.files %}
+                {% for image in recipe.files %}
                     <div class="photo" id="{{image.id}}">
                         <img src="{{image.src}}" alt="{{image.name}}">
                         <i class="material-icons" onclick="PhotosUpload.removeOldPhoto(event)">close</i>

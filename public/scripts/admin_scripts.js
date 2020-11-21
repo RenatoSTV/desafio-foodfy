@@ -10,7 +10,7 @@ for (item of menuItems) {
 // ADICIONAR INGREDIENTES E PREPARO
 
 function addIngredient() {
-  const ingredients = document.querySelector(".ingredients .content");
+  const ingredients = document.querySelector(".ingredients");
   const fieldContainer = document.querySelectorAll(".ingredient");
 
   // Realiza um clone do último ingrediente adicionado
@@ -26,7 +26,7 @@ function addIngredient() {
 }
 
 function addStep() {
-  const preparo = document.querySelector(".steps .content");
+  const preparo = document.querySelector(".preparo");
   const fieldContainer = document.querySelectorAll(".step");
 
   // Realiza um clone do último ingrediente adicionado

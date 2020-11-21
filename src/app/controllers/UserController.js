@@ -11,8 +11,7 @@ module.exports = {
       req.session.error = "";
       const loggedId = req.session.userId;
 
-      let results = await User.all();
-      let users = results.rows;
+      let users = await User.findAll();
       return res.render("admin/users/list", { users, error, loggedId });
     } catch (error) {
       console.error(error);
@@ -22,13 +21,13 @@ module.exports = {
     return res.render("admin/users/register");
   },
   edit(req, res) {
-    const error = ""
+    const error = "";
     const { user } = req;
     return res.render("admin/users/edit", { user, error });
   },
   async post(req, res) {
     try {
-      const { name, email, is_admin } = req.body;
+      let { name, email, is_admin } = req.body;
 
       const password = crypto.randomBytes(8).toString("hex");
 
@@ -51,6 +50,12 @@ module.exports = {
             `,
       });
       const passwordHash = await hash(password, 8);
+
+      if (is_admin === undefined) {
+        is_admin = "false";
+      } else {
+        is_admin = "true";
+      }
 
       const fields = {
         name,
@@ -82,8 +87,7 @@ module.exports = {
         is_admin,
       });
 
-      let results = await User.all();
-      let users = results.rows;
+      let users = await User.findAll();
 
       return res.render("admin/users/list", {
         users,
@@ -103,22 +107,23 @@ module.exports = {
   },
   async delete(req, res) {
     try {
-      userId = req.params.id
-      
+      userId = req.params.id;
+
       await User.delete(userId);
 
-      return res.render("admin/admin_index", {
+      let users = await User.findAll();
+      return res.render("admin/users/list", {
+        users,
         success: "Conta deletada com sucesso!",
       });
     } catch (error) {
       console.error(error);
-      let results = await User.all();
+      let results = await User.findAll();
       let users = results.rows;
       return res.render("admin/users/list", {
         users,
         error: "Erro ao tentar deletar conta!",
       });
     }
-
   },
 };

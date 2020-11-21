@@ -2,26 +2,15 @@ const User = require("../models/User");
 const { compare } = require("bcryptjs");
 const Recipe = require("../models/Recipe");
 
-function checkAllFields(body) {
-  const keys = Object.keys(body);
-
-  for (key of keys) {
-    if (body[key] == "" && key != "removed_files") {
-      return {
-        user: body,
-        error: "Por favor, preencha todos os campos.",
-      };
-    }
-  }
-}
+const LoadRecipeService = require("../services/LoadRecipeServices");
 
 async function show(req, res, next) {
-  const { userId: id } = req.session;
+  const {userId: id} = req.session
 
-  const user = await User.findOne({ where: { id } });
+  const user = await User.findOne({ where: {id} })
 
   if (!user)
-    return res.render("user/register", {
+    return res.render("admin/users/register", {
       error: "Usuário não encontrado!",
     });
 
@@ -49,8 +38,8 @@ async function validate(req, res, next) {
   const id = req.params.id;
   const userId = req.session.userId;
 
-  let results = await Recipe.find(id);
-  const recipe = results.rows[0];
+  let recipe = await LoadRecipeService.load("recipe",  { where: { id } });
+  if (!recipe) return res.send("Recipe not found!");
   
   function isNotAuthorized() {
     req.session.error = 'Você não tem autorização para fazer auterações nesssa receita!'

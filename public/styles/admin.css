@@ -309,6 +309,7 @@ body {
   border-radius: 4px;
   background-color: #ffffff;
   padding: 5px;
+  margin-bottom: 5px;
 }
 
 .details .item textarea {
@@ -626,6 +627,12 @@ span {
 }
 
 /* PHOTOS UPLOAD */
+
+/* 
+.item .images{
+  display: flex;
+} */
+
 form .item .photos {
   display: grid;
   grid-template-columns: 1fr auto;

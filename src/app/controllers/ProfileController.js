@@ -3,10 +3,16 @@ const User = require("../models/User");
 module.exports = {
   index(req, res) {
     const { user } = req;
+    const error = req.session.error;
+    req.session.error = "";
+
+    let success = `Bem vindo(a), ${user.name}!`
+    if( error ) {success = ""}
 
     return res.render("admin/users/index", {
       user,
-      success: `Bem vindo(a), ${user.name}!`,
+      success,
+      error,
     });
   },
   async put(req, res) {
@@ -18,7 +24,7 @@ module.exports = {
         email,
       });
 
-      const user = await User.findOne({ where: { id } });
+      const user = await User.findOne(id);
 
       return res.render("admin/users/index", {
         user,
@@ -27,7 +33,7 @@ module.exports = {
     } catch (error) {
       console.error(error);
 
-      let results = await User.all();
+      let results = await User.findAll();
       let users = results.rows;
 
       return res.render("admin/users/list", {
@@ -35,6 +41,5 @@ module.exports = {
         error: "Algum erro aconteceu!",
       });
     }
-    return res.render("admin/admin_index");
   },
 };

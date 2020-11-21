@@ -12,11 +12,11 @@
                 {{chef.name}}</h1>
             <div class="options">
                 <a id="return" href="/admin/chefs">Voltar</a>
-                <a href="/admin/chefs/{{chefId}}/edit">Editar Chef</a>
+                <a href="/admin/chefs/{{chef.id}}/edit">Editar Chef</a>
             </div>
         </div>
         <div class="chef">
-            <div id="{{chefId}}"></div>
+            <div id="{{chef.id}}"></div>
 
             <img src="{{files[0].src}}" alt="{{files[0].name}}">
 

@@ -27,25 +27,31 @@
         </div>
         <img src="/assets/chef.png" alt="chef">
     </div>
-    <div class="title">
-        <h2>Mais acessadas</h2>
-    </div>
-    <section class="cards">
-        {% for recipe in recipes %}
-            <div class="card" id="{{recipe.id}}">
-                <input type="hidden" name="id" value="{{recipe.id}}">
-                <div class="image-content">
-                    <div class="look">
-                        <a href="/{{recipe.id}}" class="visualizar">Visualizar</a>
+    {% if recipes == 0 %}
+        <div class="title">
+            <h2>Nenhuma receita cadastrada</h2>
+        </div>
+        {%else%}
+        <div class="title">
+            <h2>Mais acessadas</h2>
+        </div>
+        <section class="cards">
+            {% for recipe in recipes %}
+                <div class="card" id="{{recipe.id}}">
+                    <input type="hidden" name="id" value="{{recipe.id}}">
+                    <div class="image-content">
+                        <div class="look">
+                            <a href="/{{recipe.id}}" class="visualizar">Visualizar</a>
+                        </div>
+                        <img src="{{recipe.img}}" alt="{{recipe.title}}">
                     </div>
-                    <img src="{{recipe.img}}" alt="{{recipe.title}}">
+                    <div class="card-infos">
+                        <h3>{{recipe.title}}</h3>
+                        <p>por
+                            {{recipe.chef}}</p>
+                    </div>
                 </div>
-                <div class="card-infos">
-                    <h3>{{recipe.title}}</h3>
-                    <p>por
-                        {{recipe.chef_name}}</p>
-                </div>
-            </div>
-        {% endfor %}
+            {% endfor %}
+        {% endif %}
     </section>
 {% endblock content %}

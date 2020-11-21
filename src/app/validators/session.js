@@ -7,6 +7,7 @@ async function login(req, res, next) {
     const { email, password } = req.body
 
     const user = await User.findOne({ where: { email } })
+    console.log(user)
     
     if (!user) return res.render("admin/session/login", {
         user: req.body,
